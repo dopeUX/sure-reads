@@ -1,0 +1,11 @@
+.navbar {
+  display: flex;
+}
+.navbar .navbar-list {
+  display: flex;
+}
+.navbar .navbar-list li {
+  text-decoration: none;
+  list-style-type: none;
+  margin-right: 2rem;
+}/*# sourceMappingURL=Navbar.css.map */

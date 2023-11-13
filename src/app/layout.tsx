@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 // import "./globals.css";
+import "./globalStyles/globalStyles.css";
 import localFont from "@next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,6 +15,18 @@ const Sen = localFont({
     {
       path: "../../public/fonts/Sen-Medium.ttf",
       weight: "500",
+    },
+    {
+      path: "../../public/fonts/Sen-SemiBold.ttf",
+      weight: "600",
+    },
+    {
+      path: "../../public/fonts/Sen-Bold.ttf",
+      weight: "700",
+    },
+    {
+      path: "../../public/fonts/Sen-ExtraBold.ttf",
+      weight: "800",
     },
   ],
   variable: "--font-sen",

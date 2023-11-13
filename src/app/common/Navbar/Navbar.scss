@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+
+    .navbar-list {
+        display: flex;
+
+        li {
+            text-decoration: none;
+            list-style-type: none;
+            margin-right: 2rem;
+        }
+    }
+}

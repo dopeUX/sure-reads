@@ -1,0 +1,24 @@
+.desktop-header {
+   width :100%;
+   height: fit-content;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   .header-logo{
+     width: 100px;
+     height: fit-content;
+   }
+
+   .navbar-items{
+
+   }
+
+   .right-col-items {
+    .icons {
+        margin-left: 2rem;
+        width: 30px;
+        height: 30px;
+    }
+   }
+}

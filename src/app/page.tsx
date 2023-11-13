@@ -1,7 +1,12 @@
 import Image from "next/image";
-import AppScreen from "./layouts/AppScreen/AppScreen.component";
+import AppLayout from "./layouts/AppLayout/AppLayout.component";
+import HomeScreen from "./screens/HomeScreen/HomeScreen.component";
 // import styles from "./page.module.css";
 
 export default function Home() {
-  return <AppScreen/>;
+  return (
+    <AppLayout>
+      <HomeScreen />
+    </AppLayout>
+  );
 }
