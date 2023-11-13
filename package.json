@@ -11,7 +11,9 @@
   "dependencies": {
     "@next/font": "^14.0.2",
     "@reduxjs/toolkit": "^1.9.7",
+    "encoding": "^0.1.13",
     "next": "14.0.2",
+    "next-redux-wrapper": "^8.1.0",
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^8.1.3"

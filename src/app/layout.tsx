@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 // import "./globals.css";
 import "./globalStyles/globalStyles.css";
 import localFont from "@next/font/local";
-
+import { ReduxProvider } from "./store/Provider";
 const inter = Inter({ subsets: ["latin"] });
 
 const Sen = localFont({
@@ -44,7 +44,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${Sen.variable} font-sans`}>{children}</body>
+      <body className={`${Sen.variable} font-sans`}>
+        <ReduxProvider>{children}</ReduxProvider>
+      </body>
     </html>
   );
 }

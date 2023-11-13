@@ -13,13 +13,13 @@ const navItems: Array<any> = [
     id: 2,
     title: 'Library',
     key:'library',
-    route:'/'
+    route:'/library'
   },
   {
     id: 3,
     title: 'About',
     key:'about',
-    route:'/'
+    route:'/about'
   },
 ]
 
