@@ -1,0 +1,27 @@
+body {
+  background: white;
+  font-family: var(--font-sen);
+}
+
+.global-container {
+  margin: 1rem auto;
+  width: 90% !important;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+button {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #22A699;
+  color: #ffffff;
+  font-family: inherit;
+  outline: none;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+}/*# sourceMappingURL=FilledButton.css.map */

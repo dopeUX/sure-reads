@@ -8,7 +8,7 @@ export interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ items }) => {
   let inx: number = 0;
   const pathName = usePathname();
-  console.log(pathName, "ppppp");
+  console.log(process.env.USER, "ppppp");
 
   useLayoutEffect(() => {
     const _index = items?.findIndex((x) => x.route === pathName)!;
@@ -40,3 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
 };
 
 export default Navbar;
+
+export async function getServerSideProps() {
+  console.log(process.env.USER, "pppppp");
+}

@@ -1,6 +1,113 @@
+body {
+  background: white;
+  font-family: var(--font-sen);
+}
+
+.global-container {
+  margin: 1rem auto;
+  width: 90% !important;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .home-screen {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 1rem auto;
+}
+.home-screen .home-screen-content {
+  width: 100%;
+  display: block;
+}
+.home-screen .home-screen-content .hero-section {
+  display: flex;
+  justify-content: space-around;
+}
+.home-screen .home-screen-content .hero-section .hero-image {
+  width: 20rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 1rem 2rem 0 5rem;
+}
+.home-screen .home-screen-content .hero-section .right-col {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: auto;
+  display: block;
+  text-align: right;
+}
+.home-screen .home-screen-content .hero-section .right-col p {
+  width: 600px;
+  font-size: 2rem;
+  text-align: right;
+}
+.home-screen .home-screen-content .hero-section .right-col h4 {
+  font-size: 2rem;
+}
+.home-screen .home-screen-content .readscape-sec {
+  padding-left: 2rem;
+}
+.home-screen .home-screen-content .readscape-sec h2 {
+  margin-left: 3rem;
+  width: 40%;
+  font-size: 3.5rem;
+}
+.home-screen .home-screen-content .readscape-sec h2 span {
+  color: #22A699;
+}
+.home-screen .home-screen-content .readscape-sec p {
+  width: 60%;
+  font-size: 1.2rem;
+  margin-left: 3rem;
+}
+.home-screen .home-screen-content .top-reads {
+  display: block;
+  margin: auto;
+  text-align: center;
+  margin-top: 4rem;
+}
+.home-screen .home-screen-content .top-reads h3 {
+  font-size: 1.8rem;
+}
+.home-screen .home-screen-content .top-reads h3 span {
+  color: #22A699;
+}
+.home-screen .home-screen-content .top-reads .tiles {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  margin: auto;
+}
+.home-screen .home-screen-content .bottom-section {
+  display: block;
+  justify-content: space-around;
+  text-align: right;
+}
+.home-screen .home-screen-content .bottom-section div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-screen .home-screen-content .bottom-section div .image {
+  width: 500px;
+  margin: 6rem auto auto 5rem;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.home-screen .home-screen-content .bottom-section div h2 {
+  text-align: right;
+  margin: 2rem 4rem auto 3rem;
+  width: 30%;
+  font-size: 5rem;
+}
+.home-screen .home-screen-content .bottom-section div h2 span {
+  color: #22A699;
+}
+.home-screen .home-screen-content .bottom-section h3 {
+  margin-right: 5rem;
+  font-size: 2rem;
+}
+.home-screen .home-screen-content .bottom-section h3 span {
+  color: #22A699;
 }/*# sourceMappingURL=HomeScreen.component.css.map */

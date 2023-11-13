@@ -1,0 +1,15 @@
+@import '../../globalStyles/globalStyles.scss';
+
+button {
+  width: fit-content;
+  height: fit-content;
+  background-color: $base-color;
+  color: #ffffff;
+  font-family: inherit;
+  outline: none;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: .7rem;
+  cursor: pointer;
+}

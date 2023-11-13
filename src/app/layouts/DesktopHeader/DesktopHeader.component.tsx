@@ -13,7 +13,7 @@ export interface DesktopHeaderProps {
 
 const DesktopHeader: React.FC<DesktopHeaderProps> = () => {
   return (
-    <div className="desktop-header global-container">
+    <div className="global-container desktop-header">
       <Image className="header-logo" priority src={logo} alt="" />
       <div className="navbar-items">
         <Navbar items={navItems} />
