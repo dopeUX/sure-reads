@@ -6,7 +6,7 @@ interface stateTypes {
 }
 
 const initialState:stateTypes = {
-  showDialog:true,
+  showDialog:false,
   currentBookId:'1' 
 }
 

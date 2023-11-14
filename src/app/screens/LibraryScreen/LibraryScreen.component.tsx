@@ -10,27 +10,28 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import Multiselect from 'multiselect-react-dropdown';
 import icon from '../../../../public/assets/arrow-down.svg';
 import Select from "react-select";
+import ProductTile from "@/app/common/ProductTile/ProductTile";
+import { useDispatch } from "react-redux";
+import { updateCurrentBookId, updateDialogState } from "@/app/store/AppSlice";
 
 export interface LibraryScreenProps {
 	children?: React.ReactNode;
 }
 
 const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
-	const [bookslist, setBooksList] = useState<Array<any>>();
+	const [booksList, setBooksList] = useState<Array<any>>();
 	const [isLoading, setIsLoading] = useState(true);
 	const [displayState, setDisplayState] = useState(false);
+	const dispatch = useDispatch();
 	useEffect(() => {
-    //    getData();
-	// const v = document.querySelectorAll('.displayNone')
-	// console.log(v, 'kkkkkk4444')
-	// v.forEach(element => {
-	// 	element.classList.remove('displayNone')
-	// });
+       getData();
 	},[]);
 
 	const getData = async () => {
 	  const response:any = await getAllBooks();
 	  setBooksList([...response.data]);
+	  console.log(response, 'bbbbbb')
+	  setIsLoading(false);
 	}
 	const options = [{name: 'Option 1', id: 1},{name: 'Option 2', id: 2}]
 	const options2 = [
@@ -119,7 +120,19 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			   <Skeleton className="item" count={1} width={200} height={300}/> 
 			  </div>) : (<div className="books-tile">
 				<ul className="books-list">
-				   	
+				  {
+				   booksList &&	booksList?.map((item:any, index:any) => {
+					  return (
+						<ProductTile image={item.volumeInfo.imageLinks?.thumbnail} 
+						title={item.volumeInfo.title} click={() => {
+							dispatch(updateCurrentBookId(item.id));
+							setTimeout(() => {
+							  dispatch(updateDialogState(true));
+							},50)
+						}}/>
+					  )	
+					})
+				  }
 				</ul>
 			  </div>) }
 			</div>

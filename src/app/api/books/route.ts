@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import booksData from '../../statics/booksData';
+import booksData from '../../Statics/booksData';
 
 export function GET(request: Request) {
   const {searchParams} = new URL(request.url)

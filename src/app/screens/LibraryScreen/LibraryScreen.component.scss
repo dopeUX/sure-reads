@@ -53,7 +53,13 @@
 		  }
 		}
 		.books-tile {
-		   	
+			background-color: #F2F0F0;
+			padding-top: .5rem;
+			border-radius: 20px;
+		   .books-list {
+			 display: grid;
+			 grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
+		   }	
 		}
 	}
   }	
