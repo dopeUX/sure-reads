@@ -3,6 +3,8 @@ $base-color: #22A699;
 
 body {
     background: white;
+    margin: 0;
+    padding: 0;
     font-family: var(--font-sen);
 }
 
@@ -10,4 +12,8 @@ body {
   margin: 1rem auto;
   width: 90% !important;
   height: fit-content;
+}
+
+.index-99 {
+  z-index: 99;
 }

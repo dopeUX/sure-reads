@@ -15,9 +15,9 @@ import bookImage from "../../../../public/assets/bible.svg";
 export interface HomeScreenProps {}
 
 const HomeScreen: React.FC<HomeScreenProps> = () => {
-  const name = useSelector((state: RootState) => {
-    return state.AppReducer.name;
-  });
+  // const name = useSelector((state: RootState) => {
+  //   return state.AppReducer.name;
+  // });
   const [books, setBooks] = useState<Array<any>>([]);
   const randomWeeklyTopics = [1, 2, 3];
   const recommendedTopics = [5, 6, 7];
