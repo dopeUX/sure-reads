@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import "./Navbar.css";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 export interface NavbarProps {
   items?: Array<any>;
 }
@@ -8,14 +9,15 @@ export interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ items }) => {
   let inx: number = 0;
   const pathName = usePathname();
-  console.log(process.env.USER, "ppppp");
+  const [activeIndex, setActiveIndex] = useState<number>();
+  console.log(pathName, "ppppp");
 
   useLayoutEffect(() => {
     const _index = items?.findIndex((x) => x.route === pathName)!;
     inx = _index !== -1 ? _index : 0;
+    setActiveIndex(inx);
   }, []);
-  const [activeIndex, setActiveIndex] = useState<number>(inx);
-
+  const router = useRouter();
   return (
     <div className="navbar">
       <ul className="navbar-list">
@@ -25,6 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
               key={item.id}
               onClick={() => {
                 setActiveIndex(index);
+                router.push(item.route);
               }}
             >
               <p className={`${activeIndex === index && "active"}`}>

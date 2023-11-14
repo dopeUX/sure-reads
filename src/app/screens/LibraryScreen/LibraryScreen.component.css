@@ -1,0 +1,27 @@
+.library-screen {
+  margin: auto;
+  display: block;
+}
+.library-screen .library-content {
+  display: flex;
+}
+.library-screen .library-content .left-filter-col {
+  width: 400px;
+  height: 100px;
+  display: block;
+  margin-left: 0.5rem;
+  background-color: #F2F0F0;
+  border-radius: 20px;
+}
+.library-screen .library-content .right-col {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.library-screen .library-content .right-col .input {
+  width: 100%;
+}
+.library-screen .library-content .right-col .loading-screen {
+  height: -moz-fit-content;
+  height: fit-content;
+}/*# sourceMappingURL=LibraryScreen.component.css.map */

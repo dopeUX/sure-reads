@@ -109,11 +109,11 @@ body {
 }
 .dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .button {
   padding: 1rem 3rem;
-  position: absolute;
+  position: fixed;
   right: 0;
   left: 0;
   margin: auto;
-  bottom: 0;
+  bottom: 2rem;
   box-shadow: 10px 10px 50px 5px rgba(65, 65, 65, 0.337254902);
 }
 .dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .close-btn {

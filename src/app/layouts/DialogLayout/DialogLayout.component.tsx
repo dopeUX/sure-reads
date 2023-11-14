@@ -63,11 +63,12 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                   }}/>
                 }
                 <div className="close-btn" onClick={() => {
-                  console.log('hhhh')
                   wrapperContentRef.current.style.animation = 'slide-down cubic-bezier(0.77, 0, 0.175, 1) 1s forwards';
                   setTimeout(() => {
                     dialogRef.current.style.opacity = 0;
-                    dispatch(updateDialogState(false));
+                    setTimeout(() => {
+                      dispatch(updateDialogState(false));
+                    }, 500)
                   },1000)
                 }}></div>
               </div>

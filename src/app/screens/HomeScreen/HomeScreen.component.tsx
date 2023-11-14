@@ -4,13 +4,14 @@ import React, { useEffect, useState } from "react";
 import "./HomeScreen.component.css";
 import DesktopHeader from "@/app/layouts/DesktopHeader/DesktopHeader.component";
 import { RootState } from "@/app/store/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import heroImage from "../../../../public/assets/hero-image.svg";
 import getAllBooks from "@/app/helpers/booksService";
 import ProductTile from "@/app/common/ProductTile/ProductTile";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
 import bookImage from "../../../../public/assets/bible.svg";
+import { updateCurrentBookId, updateDialogState } from "@/app/store/AppSlice";
 
 export interface HomeScreenProps {}
 
@@ -24,7 +25,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   useEffect(() => {
     getBooks();
   }, []);
-
+  const dispatch = useDispatch();
   const getBooks = async () => {
     const response: any = await getAllBooks();
     console.log(response, "oooooo");
@@ -70,6 +71,12 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                     key={index}
                     image={it.volumeInfo.imageLinks.thumbnail}
                     title={it.volumeInfo.title}
+                    click={() => {
+                      dispatch(updateCurrentBookId(it.id));
+                      setTimeout(() => {
+                        dispatch(updateDialogState(true));
+                      },50)
+                    }}
                   />
                 );
               })}
@@ -89,6 +96,12 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                     key={index}
                     image={it.volumeInfo.imageLinks.thumbnail}
                     title={it.volumeInfo.title}
+                    click={() => {
+                      dispatch(updateCurrentBookId(it.id));
+                      setTimeout(() => {
+                        dispatch(updateDialogState(true));
+                      },50)
+                    }}
                   />
                 );
               })}
