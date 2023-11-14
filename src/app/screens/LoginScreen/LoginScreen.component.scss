@@ -1,0 +1,48 @@
+.login-screen{
+	width: 100%;
+	display: block;
+
+	.login-screen-wrapper {
+		width: 90%;
+		margin: 3rem auto;
+		display: block;
+		text-align: center;
+
+		.logo {
+		  margin: 1rem auto;	
+		  width: 100px;
+		  height: fit-content;	
+		}
+
+		.login-content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.tree-img {
+			  width: 250px;
+			  height: auto;	
+			}
+			.divider {
+			  width: 2px;
+			  height: 400px;
+			  margin: 1.5rem 5rem;
+			  background-color: rgb(86, 86, 86);
+			}
+			.login-form {
+				h2{
+					width: 250px;
+					margin-bottom: 2rem;
+				}
+				text-align: left;
+				.input {
+					width: 250px;
+					padding:1rem 1rem !important;
+				}
+				.button {
+				  margin-top:3.2rem;	
+				}
+			}
+		}
+
+	}
+}

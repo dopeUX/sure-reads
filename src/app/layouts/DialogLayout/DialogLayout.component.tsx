@@ -62,7 +62,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                 {
                   bookItem?.saleInfo?.saleability === 'FOR_SALE' &&          
                    <FilledButton classN='button' title="Add To Cart" click = {()=>{
-                      const isLoggedIn = localStorage.getItem('isLoggedIn');
+                      const isLoggedIn = Boolean(localStorage.getItem('isLoggedIn'));
                       if(isLoggedIn) {
                         alert('item added to cart')
                       } else {

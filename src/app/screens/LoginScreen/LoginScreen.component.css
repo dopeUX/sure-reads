@@ -1,0 +1,45 @@
+.login-screen {
+  width: 100%;
+  display: block;
+}
+.login-screen .login-screen-wrapper {
+  width: 90%;
+  margin: 3rem auto;
+  display: block;
+  text-align: center;
+}
+.login-screen .login-screen-wrapper .logo {
+  margin: 1rem auto;
+  width: 100px;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.login-screen .login-screen-wrapper .login-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-screen .login-screen-wrapper .login-content .tree-img {
+  width: 250px;
+  height: auto;
+}
+.login-screen .login-screen-wrapper .login-content .divider {
+  width: 2px;
+  height: 400px;
+  margin: 1.5rem 5rem;
+  background-color: rgb(86, 86, 86);
+}
+.login-screen .login-screen-wrapper .login-content .login-form {
+  text-align: left;
+}
+.login-screen .login-screen-wrapper .login-content .login-form h2 {
+  width: 250px;
+  margin-bottom: 2rem;
+}
+.login-screen .login-screen-wrapper .login-content .login-form .input {
+  width: 250px;
+  padding: 1rem 1rem !important;
+}
+.login-screen .login-screen-wrapper .login-content .login-form .button {
+  margin-top: 3.2rem;
+}/*# sourceMappingURL=LoginScreen.component.css.map */

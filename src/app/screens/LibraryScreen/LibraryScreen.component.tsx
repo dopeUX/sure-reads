@@ -109,7 +109,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			  </div>
 			</div>
 			<div className="right-col">
-			  <InputBox holderText="search library..." classN="input"/>
+			  <InputBox holderText="search library..." icon classN="input"/>
               <p>search results ....</p>
 			  { isLoading ? (<div className="skeleton-grid">
 			   <Skeleton className="item" count={1} width={200} height={300}/> 

@@ -5,14 +5,17 @@ import Image from "next/image";
 
 export interface InputBoxProps {
   holderText: string;
-  classN: string;
+  classN?: string;
+  icon: boolean;
+  inputClass?: string;
+  type?: string;
 }
 
-const InputBox:React.FC<InputBoxProps> = ({holderText, classN = ''}) => {
+const InputBox:React.FC<InputBoxProps> = ({holderText, classN = '', icon, inputClass, type}) => {
 	return (
 	  <div className={`input-box ${classN}`}>
-	   <Image className="image" src={searchIcon} alt=""/>
-       <input title="tt" placeholder={holderText}/>
+       {icon && <Image className="image" src={searchIcon} alt=""/>}
+       <input type="password" className={inputClass} title="tt" placeholder={holderText}/>
 	  </div>	
 	)
 } 
