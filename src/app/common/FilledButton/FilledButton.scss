@@ -12,4 +12,10 @@ button {
   font-size: 1rem;
   border-radius: .7rem;
   cursor: pointer;
+
+  &:hover {
+    background-color: #ffffff;
+    border: 2px solid $base-color;
+    color: $base-color;
+  }
 }

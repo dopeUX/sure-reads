@@ -1,5 +1,7 @@
 body {
   background: white;
+  margin: 0;
+  padding: 0;
   font-family: var(--font-sen);
 }
 
@@ -8,6 +10,10 @@ body {
   width: 90% !important;
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.index-99 {
+  z-index: 99;
 }
 
 button {
@@ -24,4 +30,9 @@ button {
   font-size: 1rem;
   border-radius: 0.7rem;
   cursor: pointer;
+}
+button:hover {
+  background-color: #ffffff;
+  border: 2px solid #22A699;
+  color: #22A699;
 }/*# sourceMappingURL=FilledButton.css.map */
