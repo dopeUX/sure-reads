@@ -5,6 +5,7 @@
 .library-screen {
   margin: auto;
   display: block;
+  overflow-y: hidden;
 }
 .library-screen .library-content {
   display: flex;
@@ -49,6 +50,7 @@
   display: inline-block;
 }
 .library-screen .library-content .right-col .books-tile {
+  overflow-y: scroll;
   background-color: #F2F0F0;
   padding-top: 0.5rem;
   border-radius: 20px;

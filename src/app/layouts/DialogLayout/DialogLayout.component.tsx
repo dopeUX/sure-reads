@@ -10,6 +10,7 @@ import _ from "lodash";
 import Image from "next/image";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
 import { updateDialogState } from "@/app/store/AppSlice";
+import { useRouter } from "next/navigation";
 export interface DialogLayoutProps {
   children?: React.ReactNode;
 }
@@ -19,6 +20,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
   const currentId = useSelector((state: RootState) => {
     return state.AppReducer.currentBookId;
   });
+  const router = useRouter()
   const dispatch = useDispatch();
   const dialogRef: any = useRef();
   const wrapperContentRef:any = useRef();
@@ -28,7 +30,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
     getData();
   }, []);
   const getData = async () => {
-    const response: any = await getAllBooks(currentId);
+    const response: any = await getAllBooks(undefined, currentId);
     console.log(response, "jjjjj");
     setBookItem(response.data);
     setIsLoading(false);
@@ -58,8 +60,14 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                  <p className={`${bookItem?.saleInfo?.saleability === 'FOR_SALE' ? 'p-green' : 'p-red'}`}>{bookItem.saleInfo.saleability === 'FOR_SALE' ? 'For sale' : 'Not for sale'}</p>
                 </section>
                 {
-                  bookItem?.saleInfo?.saleability === 'FOR_SALE' &&           <FilledButton classN='button' title="Add To Cart" click = {()=>{
-                    console.log('iiii')
+                  bookItem?.saleInfo?.saleability === 'FOR_SALE' &&          
+                   <FilledButton classN='button' title="Add To Cart" click = {()=>{
+                      const isLoggedIn = localStorage.getItem('isLoggedIn');
+                      if(isLoggedIn) {
+                        alert('item added to cart')
+                      } else {
+                        router.push('/login')
+                      }
                   }}/>
                 }
                 <div className="close-btn" onClick={() => {

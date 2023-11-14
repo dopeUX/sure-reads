@@ -5,6 +5,12 @@ body {
   font-family: var(--font-sen);
 }
 
+input {
+  font-family: inherit;
+  outline: none;
+  border: none;
+}
+
 .global-container {
   margin: 1rem auto;
   width: 90% !important;
@@ -65,6 +71,7 @@ body {
   margin-left: 0.3rem;
 }
 .dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .authors {
+  width: 60%;
   font-size: 2rem;
   color: #757575;
 }

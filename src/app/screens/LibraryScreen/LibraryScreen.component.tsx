@@ -28,7 +28,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 	},[]);
 
 	const getData = async () => {
-	  const response:any = await getAllBooks();
+	  const response:any = await getAllBooks(0);
 	  setBooksList([...response.data]);
 	  console.log(response, 'bbbbbb')
 	  setIsLoading(false);
