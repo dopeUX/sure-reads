@@ -1,3 +1,7 @@
+.displayNone {
+  display: block;
+}
+
 .library-screen {
   margin: auto;
   display: block;
@@ -7,11 +11,26 @@
 }
 .library-screen .library-content .left-filter-col {
   width: 400px;
-  height: 100px;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.8rem 1.2rem;
   display: block;
   margin-left: 0.5rem;
   background-color: #F2F0F0;
   border-radius: 20px;
+  margin-right: 1rem;
+}
+.library-screen .library-content .left-filter-col .dropdown-selector {
+  display: block;
+}
+.library-screen .library-content .left-filter-col .dropdown-selector .year {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+.library-screen .library-content .left-filter-col .dropdown-selector .year .multiselect {
+  background-color: #e6e0e0;
+  width: 120px;
 }
 .library-screen .library-content .right-col {
   width: 100%;
@@ -21,7 +40,11 @@
 .library-screen .library-content .right-col .input {
   width: 100%;
 }
-.library-screen .library-content .right-col .loading-screen {
-  height: -moz-fit-content;
-  height: fit-content;
+.library-screen .library-content .right-col .skeleton-grid {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
+}
+.library-screen .library-content .right-col .skeleton-grid .item {
+  display: inline-block;
 }/*# sourceMappingURL=LibraryScreen.component.css.map */

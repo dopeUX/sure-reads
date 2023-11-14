@@ -1,29 +1,56 @@
+.displayNone {
+	display: block;
+}
+
 .library-screen {
   margin: auto;
   display: block;
+
   .library-content {
     display: flex;
 	.left-filter-col {
 	  width: 400px;
-	  height:100px;
+	  height:fit-content;
+	  padding: .8rem 1.2rem;
 	  display: block;
 	  margin-left: .5rem;
 	  background-color: #F2F0F0;	
 	  border-radius: 20px;
+      margin-right: 1rem;
+	  .dropdown-selector {
+		display: block;
+	  p{
+         
+	  }	
+	  .year {
+		width: 100%;
+		justify-content: space-between;
+		display: flex;
+	   .multiselect {
+		 background-color: #e6e0e0;
+		 width: 120px;
+	   }
+	  }
+	 }
 	}
 	.right-col {
 		width: 100%;
 		height: 100%;
-		
+
 		overflow-y: scroll;
 
 		.input {
 			width: 100%;
 		}
         
-		.loading-screen {
-		//   width: 100%;	
-		  height: fit-content;
+		.skeleton-grid{
+			display: grid;
+			grid-gap:5px;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
+
+		  .item{
+			display: inline-block;
+		  }
 		}
 		.books-tile {
 		   	
