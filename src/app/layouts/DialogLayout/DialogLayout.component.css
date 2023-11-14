@@ -23,6 +23,19 @@
   border-top-left-radius: 3rem;
   animation: slide-up cubic-bezier(0.77, 0, 0.175, 1) 1s forwards;
 }
+.dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content {
+  padding: 2rem 3rem;
+}
+.dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details h1 {
+  width: 50%;
+  font-size: 4.5rem;
+  margin: 0;
+}
+.dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details p {
+  font-size: 2rem;
+  color: black;
+  margin-left: 0.3rem;
+}
 @keyframes slide-up {
   from {
     bottom: -85vh;
