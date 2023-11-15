@@ -9,13 +9,14 @@ export interface InputBoxProps {
   icon: boolean;
   inputClass?: string;
   type?: string;
+  value?: string;
 }
 
-const InputBox:React.FC<InputBoxProps> = ({holderText, classN = '', icon, inputClass, type}) => {
+const InputBox:React.FC<InputBoxProps> = ({holderText, classN = '', icon, inputClass, type, value}) => {
 	return (
 	  <div className={`input-box ${classN}`}>
        {icon && <Image className="image" src={searchIcon} alt=""/>}
-       <input type="password" className={inputClass} title="tt" placeholder={holderText}/>
+       <input type={type} value={value} className={inputClass} title="tt" placeholder={holderText}/>
 	  </div>	
 	)
 } 

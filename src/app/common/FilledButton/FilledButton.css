@@ -5,6 +5,12 @@ body {
   font-family: var(--font-sen);
 }
 
+input {
+  font-family: inherit;
+  outline: none;
+  border: none;
+}
+
 .global-container {
   margin: 1rem auto;
   width: 90% !important;

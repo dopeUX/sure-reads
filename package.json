@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@types/lodash": "^4.14.201",
     "axios": "^1.6.1",
+    "breakfast-ui": "^2.0.3",
     "encoding": "^0.1.13",
     "lodash": "^4.17.21",
     "multiselect-react-dropdown": "^2.0.25",

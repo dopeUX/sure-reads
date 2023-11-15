@@ -1,16 +1,17 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import './LoginScreen.component.css';
 import Image from "next/image";
 import logo from '../../../../public/assets/sure-reads-logo.svg';
 import tree from '../../../../public/assets/tree.svg';
 import InputBox from "@/app/common/InputBox/InputBox";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
+import { useRouter } from "next/navigation";
 export interface LoginScreenProps {
 
 }
 
 const saveUser = () => {
-	localStorage.setItem('isLoggedIn', 'true');
 	const currentUser = {
 	  firstName:'shreyash',
 	  lastName:'fz',
@@ -20,10 +21,13 @@ const saveUser = () => {
 	  pincode:'442401',
 	  phone:'92752799272'	
 	}
+	localStorage.setItem('isLoggedIn', "true");
 	localStorage.setItem('currentUser', JSON.stringify(currentUser));
 }
 
 const LoginScreen:React.FC<LoginScreenProps> = ({}) => {
+	const [isLoading, setIsLoading] = useState(false)
+	const router = useRouter();
 	return (
 	  <div className="login-screen global-container">
         <div className="login-screen-wrapper">
@@ -34,12 +38,17 @@ const LoginScreen:React.FC<LoginScreenProps> = ({}) => {
 			<div className="login-form">
 				<h2>Sign in with your registered email</h2>
 				<p>Email</p>
-				<InputBox holderText="" icon={false} inputClass='input'/>
+				<InputBox holderText="" value='testuser@gmail.com' icon={false} inputClass='input'/>
 				<p>Password</p>
-				<InputBox holderText="" type='password' icon={false} inputClass='input'/>
+				<InputBox holderText="" type='password' value="1234" icon={false} inputClass='input'/>
 				<FilledButton classN="button" title="Sign In" click={() => {
-				    if()
+					setIsLoading(true)
+				    saveUser()
+					setTimeout(()=>{
+                      router.back();
+					},2000)
 				}}/>
+				{isLoading && <p>Signing you in...</p> }
 			</div>
 		   </section>
 		</div>
