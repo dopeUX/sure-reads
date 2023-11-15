@@ -57,7 +57,8 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 
 	useEffect(() => {
 	  setIsLoading(true);
-      getData({},'',currentPageIndex * 12);
+      getData({},'',(currentPageIndex-1) * 12);
+	  console.log((currentPageIndex-1) * 12, 'ccccc')
 	},[currentPageIndex])
 
 	const getCats = async () => {
@@ -210,7 +211,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 				</ul>
 				<div className="pages-count-sec">
 				  {
-				   isPaginationOn && Array(pagesCount).fill(0).map((_, index) => index + 1).map((item) => {
+				   isPaginationOn && Array(pagesCount+1).fill(0).map((_, index) => index + 1).map((item) => {
                       return(
 						<button className={`${item===currentPageIndex && 'active'}`} onClick={()=>{
 							setCurrentPageIndex(item);
