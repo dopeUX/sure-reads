@@ -49,6 +49,11 @@ input {
   border-radius: 20px;
   margin-right: 1rem;
 }
+.library-screen .library-content .left-filter-col .left-btn {
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
 .library-screen .library-content .left-filter-col .dropdown-selector {
   display: block;
 }

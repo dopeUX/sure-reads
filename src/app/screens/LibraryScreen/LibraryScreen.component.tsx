@@ -14,6 +14,9 @@ import ProductTile from "@/app/common/ProductTile/ProductTile";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentBookId, updateDialogState, updateTotalBooksCount } from "@/app/store/AppSlice";
 import { RootState } from "@/app/store/store";
+import getAllCategories from "@/app/helpers/categoriesService";
+import { pageCountOptions, pdfAvailable, saleabilityOptions, yearOptions } from "@/app/Statics/dropdownOptions";
+import FilledButton from "@/app/common/FilledButton/FilledButton";
 
 export interface LibraryScreenProps {
 	children?: React.ReactNode;
@@ -34,7 +37,9 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 	useEffect(() => {
 	setIsLoading(true);	
        getData('',0);
+	   getCats();
 	},[]);
+	const [categories, setCategories] = useState<any>([]);
 
 	useEffect(() => {
       setPagesCount(Math.round(totalBooksCount/12));
@@ -46,6 +51,15 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
       getData('',currentPageIndex * 12);
 	},[currentPageIndex])
 
+	const getCats = async () => {
+		setIsLoading(true);
+		const response: any = await getAllCategories();
+		const res = response.data.map((item: any) => {
+		  return {value:item, label: item}	
+		})
+		setCategories([...res]);
+		setIsLoading(false);
+	}
 	const getData = async (search: string, skip?:number) => {
 	  const response:any = await getAllBooks(search,skip);
 	  setBooksList([...response.data]);
@@ -60,6 +74,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 		{ value: "Angular", label: "Angular" },
 		{ value: "Java", label: "Java" }
 	  ];
+
 	return (
 	  <AppLayout>
 		<div className="library-screen">
@@ -69,7 +84,8 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			<div className="dropdown-selector">
 			<p>category</p>
 			<Select
-              options={options2}
+			  options={categories}
+              placeholder={isLoading && 'loading...'}
             //   onChange={handleChange}
             //   value={skills}
               isMulti
@@ -78,8 +94,9 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			  <div className="dropdown-selector">
 			  <p>Price</p>
                <Select
-			    placeholder=""
+			    placeholder={isLoading && 'loading...'}
                 options={options2}
+				isClearable
                 //   onChange={handleChange}
                //   value={skills}
                />
@@ -90,43 +107,46 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                <Select
 			    className="multiselect"
 			    placeholder="From"
-                options={options2}
+                options={yearOptions}
+				isClearable
                 //   onChange={handleChange}
                //   value={skills}
                />
                <Select
 			    className="multiselect"
 			    placeholder="To"
-                options={options2}
+                options={yearOptions}
+				isClearable
                 //   onChange={handleChange}
                //   value={skills}
                />
 			   </div>
 			  </div>
 			  <div className="dropdown-selector">
-			  <p>Price</p>
+			  <p>Pdf</p>
                <Select
 			    placeholder=""
-                options={options2}
+                options={pdfAvailable}
+				isClearable
                 //   onChange={handleChange}
                //   value={skills}
-                isMulti
                />
 			  </div>
 			  <div className="dropdown-selector">
 			  <p>Saleability</p>
                <Select
 			    placeholder=""
-                options={options2}
+                options={saleabilityOptions}
                />
 			  </div>
 			  <div className="dropdown-selector">
 			  <p>Page Count</p>
                <Select
 			    placeholder=""
-                options={options2}
+                options={pageCountOptions}
                />
 			  </div>
+			  <FilledButton classN="left-btn" title="search"/>
 			</div>
 			<div className="right-col">
 			  <InputBox holderText="search library..." icon change={(e:any)=>{
