@@ -1,0 +1,39 @@
+.cart-item-tile {
+	display: flex;
+	margin-bottom: 2rem;
+    
+	.img{
+		width: 120px;
+		height: 150px;
+	}
+	.item-details{
+	text-align: left;
+	margin-left: 2rem;	
+	h3{
+		font-weight: 400;
+		margin: 0;
+		width: 200px;
+		display: block;
+	}
+	p{
+		color:#757575;
+	}
+	.price {
+		color:#1E9D51;
+	}
+
+	.quan-sec {
+		display: flex;
+		button{
+		 padding: 0;	
+         width: initial !important;
+		 height: initial !important;
+		 background-color: initial !important;
+		 color: black !important;
+		}
+		p{
+			margin:0 1rem;
+		}
+	}
+   }
+}

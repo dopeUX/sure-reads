@@ -1,0 +1,64 @@
+.cart-screen {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+}
+.cart-screen .header {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-screen .header .logo {
+  width: 100px;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.cart-screen .header h2 {
+  font-size: 1rem;
+}
+.cart-screen .cart-page-content {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+}
+.cart-screen .cart-page-content .left-col {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  display: block;
+  text-align: left;
+}
+.cart-screen .cart-page-content .left-col .your-cart {
+  margin-bottom: 2rem;
+}
+.cart-screen .cart-page-content .left-col .your-cart span {
+  margin-left: 1rem;
+}
+.cart-screen .cart-page-content .left-col .button {
+  margin-top: 5rem;
+}
+.cart-screen .cart-page-content .right-col {
+  margin-top: 5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  background-color: #F0EFEF;
+}
+.cart-screen .cart-page-content .right-col .flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+.cart-screen .cart-page-content .right-col .flex-row .price {
+  margin-left: 1.5rem;
+}
+.cart-screen .cart-page-content .right-col .divider {
+  width: 100%;
+  height: 3px;
+  border-radius: 10px;
+  background-color: black;
+}/*# sourceMappingURL=CartScreen.component.css.map */

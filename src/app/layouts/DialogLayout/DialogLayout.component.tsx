@@ -30,7 +30,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
     getData();
   }, []);
   const getData = async () => {
-    const response: any = await getAllBooks(undefined, currentId);
+    const response: any = await getAllBooks('',undefined, currentId);
     console.log(response, "jjjjj");
     setBookItem(response.data);
     setIsLoading(false);
@@ -57,13 +57,20 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                 <p className="description">{bookItem.volumeInfo?.description}</p>
                 <section className="img-section">
                  <Image className="image" width={100} height={100} src={bookItem.volumeInfo.imageLinks.thumbnail} alt=""/>
-                 <p className={`${bookItem?.saleInfo?.saleability === 'FOR_SALE' ? 'p-green' : 'p-red'}`}>{bookItem.saleInfo.saleability === 'FOR_SALE' ? 'For sale' : 'Not for sale'}</p>
+                 <p className={`${bookItem?.saleInfo?.saleability === 'FOR_SALE' ? 'p-green' : 'p-red'}`}>{bookItem.saleInfo.saleability === 'FOR_SALE' ? `${bookItem.saleInfo.listPrice.amount} INR` : 'Not for sale'}</p>
                 </section>
                 {
                   bookItem?.saleInfo?.saleability === 'FOR_SALE' &&          
                    <FilledButton classN='button' title="Add To Cart" click = {()=>{
                       const isLoggedIn = Boolean(localStorage.getItem('isLoggedIn'));
                       if(isLoggedIn) {
+                        const items:any = localStorage.getItem('cartItems');
+                        let it = [];
+                        if(items) {
+                          it = JSON.parse(items);
+                        }
+                        it.unshift({id:bookItem.id, quantity:1});
+                        localStorage.setItem('cartItems', JSON.stringify(it));
                         alert('item added to cart')
                       } else {
                         router.push('/login')

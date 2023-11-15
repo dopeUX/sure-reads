@@ -11,8 +11,9 @@ import Multiselect from 'multiselect-react-dropdown';
 import icon from '../../../../public/assets/arrow-down.svg';
 import Select from "react-select";
 import ProductTile from "@/app/common/ProductTile/ProductTile";
-import { useDispatch } from "react-redux";
-import { updateCurrentBookId, updateDialogState } from "@/app/store/AppSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCurrentBookId, updateDialogState, updateTotalBooksCount } from "@/app/store/AppSlice";
+import { RootState } from "@/app/store/store";
 
 export interface LibraryScreenProps {
 	children?: React.ReactNode;
@@ -22,15 +23,34 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 	const [booksList, setBooksList] = useState<Array<any>>();
 	const [isLoading, setIsLoading] = useState(true);
 	const [displayState, setDisplayState] = useState(false);
+	const [pagesCount, setPagesCount] = useState(0);
+	const [isPaginationOn, setIsPagination] = useState(true);
 	const dispatch = useDispatch();
+	const totalBooksCount = useSelector((state:RootState) => {
+		return state.AppReducer.totalBooksCount;
+	})
+	const [searchVal, setSearchVal] = useState('');
+	const [currentPageIndex, setCurrentPageIndex] = useState(1);
 	useEffect(() => {
-       getData();
+	setIsLoading(true);	
+       getData('',0);
 	},[]);
 
-	const getData = async () => {
-	  const response:any = await getAllBooks(0);
+	useEffect(() => {
+      setPagesCount(Math.round(totalBooksCount/12));
+	  console.log(totalBooksCount, 'ttttttt')
+	},[totalBooksCount])
+
+	useEffect(() => {
+	  setIsLoading(true);
+      getData('',currentPageIndex * 12);
+	},[currentPageIndex])
+
+	const getData = async (search: string, skip?:number) => {
+	  const response:any = await getAllBooks(search,skip);
 	  setBooksList([...response.data]);
-	  console.log(response, 'bbbbbb')
+	//   setPagesCount(Math.round([...response.data].length/12));
+	  dispatch(updateTotalBooksCount(response.totalCount))
 	  setIsLoading(false);
 	}
 	const options = [{name: 'Option 1', id: 1},{name: 'Option 2', id: 2}]
@@ -109,8 +129,21 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			  </div>
 			</div>
 			<div className="right-col">
-			  <InputBox holderText="search library..." icon classN="input"/>
-              <p>search results ....</p>
+			  <InputBox holderText="search library..." icon change={(e:any)=>{
+				console.log(e.target.value, 'xxxxx')
+				setSearchVal(e.target.value);
+				setTimeout(() => {
+					if(e.target.value===''){
+						getData('',0)
+						setIsPagination(true);
+					} else {
+						setIsPagination(false);
+					  getData(e.target.value);
+					}
+				},1000)	
+				
+			  }} classN="input" value={searchVal}/>
+              {searchVal && <p className="search">search results based on "{searchVal}"</p>}
 			  { isLoading ? (<div className="skeleton-grid">
 			   <Skeleton className="item" count={1} width={200} height={300}/> 
 			   <Skeleton className="item" count={1} width={200} height={300}/> 
@@ -134,6 +167,17 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 					})
 				  }
 				</ul>
+				<div className="pages-count-sec">
+				  {
+				   isPaginationOn && Array(pagesCount).fill(0).map((_, index) => index + 1).map((item) => {
+                      return(
+						<button className={`${item===currentPageIndex && 'active'}`} onClick={()=>{
+							setCurrentPageIndex(item);
+						}}>{item}</button>
+					  )
+					})
+				  }
+				</div>
 			  </div>) }
 			</div>
 		 </div>

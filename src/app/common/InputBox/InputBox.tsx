@@ -10,13 +10,16 @@ export interface InputBoxProps {
   inputClass?: string;
   type?: string;
   value?: string;
+  change?:any;
 }
 
-const InputBox:React.FC<InputBoxProps> = ({holderText, classN = '', icon, inputClass, type, value}) => {
+const InputBox:React.FC<InputBoxProps> = ({holderText, classN = '', icon, inputClass, type, value, change}) => {
 	return (
 	  <div className={`input-box ${classN}`}>
        {icon && <Image className="image" src={searchIcon} alt=""/>}
-       <input type={type} value={value} className={inputClass} title="tt" placeholder={holderText}/>
+       <input type={type} value={value} onChange={(e)=>{
+        change(e);
+       }} className={inputClass} title="tt" placeholder={holderText}/>
 	  </div>	
 	)
 } 

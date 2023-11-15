@@ -1,3 +1,31 @@
+body {
+  background: white;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sen);
+}
+
+input {
+  font-family: inherit;
+  outline: none;
+  border: none;
+}
+
+.global-container {
+  margin: 1rem auto;
+  width: 90% !important;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.index-99 {
+  z-index: 99;
+}
+
+.primary-text {
+  color: #22A699;
+}
+
 .displayNone {
   display: block;
 }
@@ -40,6 +68,10 @@
 }
 .library-screen .library-content .right-col .input {
   width: 100%;
+  margin-bottom: 1rem;
+}
+.library-screen .library-content .right-col .search {
+  margin-left: 0.5rem;
 }
 .library-screen .library-content .right-col .skeleton-grid {
   display: grid;
@@ -58,4 +90,22 @@
 .library-screen .library-content .right-col .books-tile .books-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
+}
+.library-screen .library-content .right-col .books-tile .pages-count-sec {
+  width: 100%;
+  height: 100px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+.library-screen .library-content .right-col .books-tile .pages-count-sec button {
+  padding: 0.8rem 1rem;
+  color: #22A699;
+  background-color: white;
+  border: 2px solid #22A699;
+  margin: 1rem;
+}
+.library-screen .library-content .right-col .books-tile .pages-count-sec .active {
+  background-color: #22A699;
+  color: white;
 }/*# sourceMappingURL=LibraryScreen.component.css.map */

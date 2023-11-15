@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getAllBooks = async (skip?:number, id?: string) => {
+const getAllBooks = async (searchQuery?: string, skip?:number|undefined, id?: string|undefined) => {
    const url = process.env.SERVICE_URL!
    let axiosConfig = {}
    if(id) {
@@ -11,6 +11,11 @@ const getAllBooks = async (skip?:number, id?: string) => {
    if(skip || skip==0) {
     axiosConfig = {
       skip:skip
+    }
+   }
+   if(searchQuery) {
+    axiosConfig = {
+      search: searchQuery
     }
    }
    console.log(axiosConfig,skip,'yyyyy')
