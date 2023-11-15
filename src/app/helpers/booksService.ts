@@ -20,18 +20,9 @@ const getAllBooks = async (advanceFilter: any, searchQuery?: string, skip?:numbe
     }
    }
    if(!_.isEmpty(advanceFilter)) {
-    Object.keys(advanceFilter).forEach((_key) => {
-      if(!advanceFilter[_key]) {
-        delete advanceFilter[_key];
-      } else if(
-        typeof advanceFilter[_key] && advanceFilter[_key].length===0
-      ) {
-        delete advanceFilter[_key]
-      }
-    })
     axiosConfig = {
-      advanceFilter: advanceFilter
-    }
+      advanceFilter : JSON.stringify(advanceFilter)
+    }  
     if(searchQuery) {
       axiosConfig['search'] = searchQuery
     }

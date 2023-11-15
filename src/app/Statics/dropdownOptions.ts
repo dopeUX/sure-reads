@@ -1,6 +1,6 @@
 export const saleabilityOptions = [
-	{ value: "For Sale", label: "For Sale" },
-	{ value: "Not For Sale", label: "Not For Sale" },
+	{ value: "FOR_SALE", label: "For Sale" },
+	{ value: "NOT_FOR_SALE", label: "Not For Sale" },
   ];
 export const pageCountOptions = [
 	{ value: "under 200", label: "under 300" },
@@ -9,8 +9,8 @@ export const pageCountOptions = [
 	{ value: "more than 700", label: "more than 700" },
 ]  
 export const pdfAvailable = [
-	{ value: "Pdf Available", label: "Pdf Available" },
-	{ value: "Pdf Not Available", label: "Pdf Not Available" },
+	{ value: true, label: "Pdf Available" },
+	{ value: false, label: "Pdf Not Available" },
 ]
 export const yearOptions = [
 	{value: "1999", label: "1999" },

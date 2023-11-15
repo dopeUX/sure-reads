@@ -17,9 +17,26 @@ import { RootState } from "@/app/store/store";
 import getAllCategories from "@/app/helpers/categoriesService";
 import { pageCountOptions, pdfAvailable, saleabilityOptions, yearOptions } from "@/app/Statics/dropdownOptions";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
-
+import _ from 'lodash';
 export interface LibraryScreenProps {
 	children?: React.ReactNode;
+}
+
+function sanitizeAdvanceFilter(advanceFilter:any) {
+	let obj :any;
+	Object.keys(advanceFilter).forEach((_key) => {
+		if(!advanceFilter[_key]) {
+		  delete advanceFilter[_key];
+		} else if(
+		  typeof advanceFilter[_key] && advanceFilter[_key].length===0
+		) {
+		  delete advanceFilter[_key]
+		}
+	  })
+	  if(!_.isEmpty(advanceFilter)) {
+		 obj = advanceFilter;
+	  }
+	return obj  
 }
 
 const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
@@ -162,7 +179,14 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                />
 			  </div>
 			  <FilledButton classN="left-btn" title="search" click={()=>{
-				getData(advanceFilter, searchVal)
+				const filter = sanitizeAdvanceFilter(advanceFilter);
+				if(filter) {
+					getData(advanceFilter, searchVal)
+					setIsPagination(false);
+				} else {
+					getData({}, '', 0);
+					setIsPagination(true);
+				}
 			  }}/>
 			</div>
 			<div className="right-col">
