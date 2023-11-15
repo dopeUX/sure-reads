@@ -3,10 +3,10 @@ export const saleabilityOptions = [
 	{ value: "NOT_FOR_SALE", label: "Not For Sale" },
   ];
 export const pageCountOptions = [
-	{ value: "under 200", label: "under 300" },
-	{ value: "Between 200-500", label: "Between 200-500" },
-	{ value: "Between 500-700", label: "Between 500-700" },
-	{ value: "more than 700", label: "more than 700" },
+	{ value: "0 - 200", label: "under 200" },
+	{ value: "200 - 500", label: "Between 200-500" },
+	{ value: "500 - 700", label: "Between 500-700" },
+	{ value: "700 - 1000000", label: "more than 700" },
 ]  
 export const pdfAvailable = [
 	{ value: true, label: "Pdf Available" },

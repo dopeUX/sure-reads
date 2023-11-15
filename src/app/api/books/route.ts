@@ -43,6 +43,14 @@ export function GET(request: Request) {
     if(advanceFilter) {
       console.log(advanceFilter,'hhhhhh')
       let datas:Array<any>=[]
+      const objMappingOperators:any = {
+        pdf:'equals',
+        saleability:'equals',
+        pageCount:'between',
+        yearFrom:'greaterThanEqualTo',
+        yearTo:'lessThanEqualTo',
+        categories:'includes'
+      }
       const objMapping:any = {
         pdf: 'accessInfo.pdf.isAvailable',
         saleability:'saleInfo.saleability',
@@ -52,6 +60,7 @@ export function GET(request: Request) {
         categories:'volumeInfo.categories'
       }
       booksData.forEach((itembook:any, index: number) => {
+         let checkPass = false;
          Object.keys(advanceFilter).forEach((item:any,index:number)=>{
             const keys = objMapping[item].split('.')
             let value:any = itembook;
@@ -59,10 +68,42 @@ export function GET(request: Request) {
                value = value[_key];
             })
             // console.log(value,itembook,keys, 'oooooo333333')
-            if(value === (advanceFilter[item])){
-               datas.push(itembook);
+            if(objMappingOperators[item] === 'equals') {
+             if(value === (advanceFilter[item])){
+               checkPass = true;
+             }
+            } else if(objMappingOperators[item] === 'includes') {
+                if(value && advanceFilter[item]) {
+                  advanceFilter[item].forEach((ix:any) => {
+                    value.join('').includes(ix);
+                    checkPass = true;
+                  });
+                }
+            } else if(objMappingOperators[item] === 'between') {
+               const from = advanceFilter[item].split(' - ')[0];
+               const to = advanceFilter[item].split(' - ')[1];
+               if(value) {
+                if(Number(value) >=from && Number(value)<=to) {
+                  checkPass = true;
+                }
+              }
+            } else if(objMappingOperators[item] === 'greaterThanEqualTo') {
+              if(value) {
+               if(Number(value.split('-')[0]) >= Number(advanceFilter[item])) {
+                 checkPass = true;
+               }
+              }
+            } else if(objMappingOperators[item] === 'lessThanEqualTo') {
+              if(value) {
+                if(Number(value.split('-')[0]) <= Number(advanceFilter[item])) {
+                  checkPass = true;
+                }
+              }
             }
          })
+         if(checkPass) {
+           datas.push(itembook);
+         }
       })
       // console.log(datas,'mmmmmm')
       return NextResponse.json({data:datas, totalCount:datas.length});
