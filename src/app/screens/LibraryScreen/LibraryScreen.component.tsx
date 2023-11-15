@@ -34,9 +34,18 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 	})
 	const [searchVal, setSearchVal] = useState('');
 	const [currentPageIndex, setCurrentPageIndex] = useState(1);
+	const [advanceFilter, setAdvanceFilter] = useState<any>({
+		categories:[],
+		price:null,
+		yearFrom:null,
+		yearTo:null,
+		pdf:null,
+        saleability:null,
+		pageCount:null
+	})
 	useEffect(() => {
 	setIsLoading(true);	
-       getData('',0);
+       getData({},'',0);
 	   getCats();
 	},[]);
 	const [categories, setCategories] = useState<any>([]);
@@ -48,7 +57,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 
 	useEffect(() => {
 	  setIsLoading(true);
-      getData('',currentPageIndex * 12);
+      getData({},'',currentPageIndex * 12);
 	},[currentPageIndex])
 
 	const getCats = async () => {
@@ -60,21 +69,13 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 		setCategories([...res]);
 		setIsLoading(false);
 	}
-	const getData = async (search: string, skip?:number) => {
-	  const response:any = await getAllBooks(search,skip);
+	const getData = async (advanceSearch:any,search: string, skip?:number) => {
+	  const response:any = await getAllBooks(advanceSearch,search,skip);
 	  setBooksList([...response.data]);
 	//   setPagesCount(Math.round([...response.data].length/12));
 	  dispatch(updateTotalBooksCount(response.totalCount))
 	  setIsLoading(false);
 	}
-	const options = [{name: 'Option 1', id: 1},{name: 'Option 2', id: 2}]
-	const options2 = [
-		{ value: "React", label: "React" },
-		{ value: "Vue", label: "Vue" },
-		{ value: "Angular", label: "Angular" },
-		{ value: "Java", label: "Java" }
-	  ];
-
 	return (
 	  <AppLayout>
 		<div className="library-screen">
@@ -86,19 +87,15 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			<Select
 			  options={categories}
               placeholder={isLoading && 'loading...'}
-            //   onChange={handleChange}
+              onChange={(e) =>{
+				const vals = e.map((item: any) => {
+				  return item.value;	
+				})
+				// const _val = vals.length > 0 ? vals : [] 
+				setAdvanceFilter({...advanceFilter, 'categories':[...vals]})
+			  }}
             //   value={skills}
               isMulti
-               />
-			  </div>
-			  <div className="dropdown-selector">
-			  <p>Price</p>
-               <Select
-			    placeholder={isLoading && 'loading...'}
-                options={options2}
-				isClearable
-                //   onChange={handleChange}
-               //   value={skills}
                />
 			  </div>
 			  <div className="dropdown-selector">
@@ -109,15 +106,20 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			    placeholder="From"
                 options={yearOptions}
 				isClearable
-                //   onChange={handleChange}
-               //   value={skills}
+                onChange={(e: any) => {
+					const _val = e?.value ? e.value : null
+					setAdvanceFilter({...advanceFilter, 'yearFrom': _val})
+				}}
                />
                <Select
 			    className="multiselect"
 			    placeholder="To"
                 options={yearOptions}
 				isClearable
-                //   onChange={handleChange}
+                onChange={(e: any) => {
+					const _val = e?.value ? e.value : null
+					setAdvanceFilter({...advanceFilter, 'yearTo': _val})
+				}}
                //   value={skills}
                />
 			   </div>
@@ -128,7 +130,10 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			    placeholder=""
                 options={pdfAvailable}
 				isClearable
-                //   onChange={handleChange}
+                onChange={(e: any) => {
+					const _val = e?.value ? e.value : null
+					setAdvanceFilter({...advanceFilter, 'pdf': _val})
+				}}
                //   value={skills}
                />
 			  </div>
@@ -137,6 +142,11 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                <Select
 			    placeholder=""
                 options={saleabilityOptions}
+				isClearable
+				onChange={(e: any) => {
+					const _val = e?.value ? e.value : null
+					setAdvanceFilter({...advanceFilter, 'saleability':_val})
+				}}
                />
 			  </div>
 			  <div className="dropdown-selector">
@@ -144,25 +154,36 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                <Select
 			    placeholder=""
                 options={pageCountOptions}
+				onChange={(e: any) => {
+					const _val = e?.value ? e.value : null
+					setAdvanceFilter({...advanceFilter, 'pageCount':_val})
+				}}
                />
 			  </div>
-			  <FilledButton classN="left-btn" title="search"/>
+			  <FilledButton classN="left-btn" title="search" click={()=>{
+				getData(advanceFilter, searchVal)
+			  }}/>
 			</div>
 			<div className="right-col">
+			  <div className="search-box-wrapper">	
 			  <InputBox holderText="search library..." icon change={(e:any)=>{
 				console.log(e.target.value, 'xxxxx')
 				setSearchVal(e.target.value);
 				setTimeout(() => {
-					if(e.target.value===''){
-						getData('',0)
-						setIsPagination(true);
-					} else {
-						setIsPagination(false);
-					  getData(e.target.value);
-					}
+					
 				},1000)	
 				
 			  }} classN="input" value={searchVal}/>
+			  <FilledButton title="search" click={()=>{
+                 if(searchVal===''){
+                 	getData({},'',0)
+                 	setIsPagination(true);
+                 } else {
+                 	setIsPagination(false);
+                    getData({},searchVal);
+                 }
+			  }}/>
+			  </div>
               {searchVal && <p className="search">search results based on "{searchVal}"</p>}
 			  { isLoading ? (<div className="skeleton-grid">
 			   <Skeleton className="item" count={1} width={200} height={300}/> 

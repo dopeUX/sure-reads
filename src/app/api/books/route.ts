@@ -7,6 +7,8 @@ export function GET(request: Request) {
   // const limit = searchParams.get('limit');
   const skip = searchParams.get('skip');
   const searchQuery = searchParams.get('search');
+  const advanceFilter:any = searchParams.get('advanceFilter');
+  let books = [];
 
   if (id) {
     const bookItem = booksData.find(x => x.id.toString() === id.toString())
@@ -34,6 +36,13 @@ export function GET(request: Request) {
         }
       })
       return NextResponse.json({data:datas, totalCount:datas.length});
+    }
+    if(advanceFilter) {
+      booksData.forEach((item:any, index: number) => {
+        if(advanceFilter.categories) {
+          
+        }
+      })
     }
     return NextResponse.json({data:booksData, totalCount: booksData.length});
   }

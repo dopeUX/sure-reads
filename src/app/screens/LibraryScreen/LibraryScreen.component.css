@@ -71,11 +71,15 @@ input {
   height: 100%;
   overflow-y: scroll;
 }
-.library-screen .library-content .right-col .input {
+.library-screen .library-content .right-col .search-box-wrapper {
+  display: flex;
+}
+.library-screen .library-content .right-col .search-box-wrapper .input {
   width: 100%;
+  margin-right: 1rem;
   margin-bottom: 1rem;
 }
-.library-screen .library-content .right-col .search {
+.library-screen .library-content .right-col .search-box-wrapper .search {
   margin-left: 0.5rem;
 }
 .library-screen .library-content .right-col .skeleton-grid {
