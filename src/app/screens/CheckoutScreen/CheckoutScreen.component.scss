@@ -1,0 +1,70 @@
+.checkout-screen {
+	display: block;	
+    padding: 1rem;
+    text-align: center;
+  .header {
+	width: 80%;
+    display: flex;
+	margin: auto;
+	justify-content: space-between;
+	align-items: center;
+	.logo {
+	  width: 100px;
+	  height: fit-content;	
+	}
+
+	.back {
+		cursor: pointer;
+	}
+
+	h2 {
+		font-size: 1rem;
+
+	}
+  }
+
+  .checkout-form {
+	width: 80%;
+	display: block;
+	margin: auto;
+	padding: 1rem 1rem;
+	text-align: left;
+
+	button {
+		margin-top: 2rem;
+		margin-left:1rem;
+		font-size: .8rem;
+	}
+
+	h4{
+		width: fit-content;
+		margin-left: 1rem;
+		font-size: 2rem;
+		font-weight: 400;
+	}
+
+
+        .form-section {
+          margin-top: 2rem;
+          margin-left: 1rem;
+          .name-sec {
+        	display: flex;
+            width: fit-content;
+        	align-items: center;
+          
+        }
+	  .input-div {
+		display: block;
+		margin-right: 2rem;
+		.custom {
+			width: 250px;
+		}
+        input {
+	     padding: 1rem 1.3rem;
+	     border-radius: 10px;
+	     background-color: #E5E4E4;
+        }
+      }
+    }
+  }
+}

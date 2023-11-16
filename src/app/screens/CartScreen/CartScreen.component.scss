@@ -13,9 +13,24 @@
 	  height: fit-content;	
 	}
 
+	.back {
+		cursor: pointer;
+	}
+
 	h2 {
 		font-size: 1rem;
 
+	}
+  }
+
+  .skeleton-loading {
+	width: 80%;
+	// display: flex;
+	margin: auto;
+	// justify-content: center;
+
+	.load {
+		margin-top: 1rem;
 	}
   }
   .cart-page-content {

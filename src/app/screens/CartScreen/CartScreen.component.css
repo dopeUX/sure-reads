@@ -15,8 +15,18 @@
   height: -moz-fit-content;
   height: fit-content;
 }
+.cart-screen .header .back {
+  cursor: pointer;
+}
 .cart-screen .header h2 {
   font-size: 1rem;
+}
+.cart-screen .skeleton-loading {
+  width: 80%;
+  margin: auto;
+}
+.cart-screen .skeleton-loading .load {
+  margin-top: 1rem;
 }
 .cart-screen .cart-page-content {
   display: flex;

@@ -1,0 +1,64 @@
+.checkout-screen {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+}
+.checkout-screen .header {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout-screen .header .logo {
+  width: 100px;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.checkout-screen .header .back {
+  cursor: pointer;
+}
+.checkout-screen .header h2 {
+  font-size: 1rem;
+}
+.checkout-screen .checkout-form {
+  width: 80%;
+  display: block;
+  margin: auto;
+  padding: 1rem 1rem;
+  text-align: left;
+}
+.checkout-screen .checkout-form button {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+}
+.checkout-screen .checkout-form h4 {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 1rem;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.checkout-screen .checkout-form .form-section {
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+.checkout-screen .checkout-form .form-section .name-sec {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+}
+.checkout-screen .checkout-form .form-section .input-div {
+  display: block;
+  margin-right: 2rem;
+}
+.checkout-screen .checkout-form .form-section .input-div .custom {
+  width: 250px;
+}
+.checkout-screen .checkout-form .form-section .input-div input {
+  padding: 1rem 1.3rem;
+  border-radius: 10px;
+  background-color: #E5E4E4;
+}/*# sourceMappingURL=CheckoutScreen.component.css.map */

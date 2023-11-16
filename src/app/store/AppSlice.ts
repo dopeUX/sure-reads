@@ -6,13 +6,15 @@ interface stateTypes {
   currentBookId: string;
   cartItems: Array<any>;
   totalBooksCount:number;
+  isCheckoutDirect:boolean;
 }
 
 const initialState:stateTypes = {
   showDialog:false,
   currentBookId:'1',
   cartItems:[],
-  totalBooksCount:0
+  totalBooksCount:0,
+  isCheckoutDirect:true
 }
 
 export const AppSlice = createSlice({
@@ -30,10 +32,13 @@ export const AppSlice = createSlice({
       },
       updateTotalBooksCount:(state, action) => {
         state.totalBooksCount = action.payload
+      },
+      updateIsCheckoutDirect:(state, action) => {
+        state.isCheckoutDirect = action.payload
       }
     }
 });
 
 
-export const {updateDialogState,updateTotalBooksCount, updateCurrentBookId, updateCartItems} = AppSlice.actions;
+export const {updateDialogState,updateTotalBooksCount, updateIsCheckoutDirect, updateCurrentBookId, updateCartItems} = AppSlice.actions;
 export default AppSlice.reducer;

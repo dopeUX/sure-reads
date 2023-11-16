@@ -8,8 +8,9 @@ import Image from "next/image";
 import CartItem from "@/app/common/CartItemTile/CartItem";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
 import { useDispatch } from "react-redux";
-import { updateCartItems } from "@/app/store/AppSlice";
-
+import { updateCartItems, updateIsCheckoutDirect } from "@/app/store/AppSlice";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 export interface CartScreenProps {
 
 }
@@ -19,15 +20,22 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 	const [cartItems, setCartItems] = useState<Array<any>>([]);
 	const [cartItemsFromRedux, setCartItemsFromRedux] = useState<Array<any>>([]);
     const dispatch = useDispatch();
+	const [isLoading, setIsLoading] = useState(true);
 	const [summary, setSummary] = useState<any>({});
 	useEffect(() => {
+	  setIsLoading(true);	
       const isLoggedIn = localStorage.getItem('isLoggedIn');
 	  if(!isLoggedIn) {
         router.push('/login');
 	  } else {
         const ids:any = localStorage.getItem('cartItems');
 		console.log(JSON.stringify(ids), 'eeee')
-		getData(ids);
+		if(ids.length > 0) {
+		 getData(ids);
+		} else {
+			setCartItems([]);
+			setIsLoading(false)
+		}
 	  }
 	},[])
     
@@ -50,17 +58,26 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 		setCartItemsFromRedux([...response.data]);
         dispatch(updateCartItems([...response.data]));
 		calculateExpense([...response.data]);
+		setIsLoading(false);
 	}
 	return (
 	  <div className="cart-screen global-container">
          <div className="header">
           <Image className="logo" src={logo} alt=""/>
-		  <h2 className="primary-text">Back To Home</h2>
+		  <h2 className="primary-text back" onClick={() => {
+			router.push('/')
+		  }}>Back To Home</h2>
 		 </div>
+		 {isLoading ? <div className="skeleton-loading">
+            <Skeleton className="load" count={1} width={'100%'} height={80}/>
+            <Skeleton className="load" count={1} width={'100%'} height={80}/>
+            <Skeleton className="load" count={1} width={'100%'} height={80}/>
+            <Skeleton className="load" count={1} width={'100%'} height={80}/>
+		 </div> :
 		 <div className="cart-page-content">
 			<section className="left-col">
 			   <h3 className="your-cart">Your Cart <span className="primary-text">{cartItems?.length} items</span></h3>
-			   <div className="cart-items-section">
+			   {cartItems.length>0 ? <div><div className="cart-items-section">
 				 {
 					cartItemsFromRedux && cartItemsFromRedux?.map((item: any, index: number) => {
 					  return <CartItem key={index} id={item.id} image={item.volumeInfo.imageLinks.thumbnail}
@@ -69,7 +86,14 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 					})
 				 }
 			   </div>
-			   <FilledButton classN="button" title="Proceed to checkout"/>
+			   <FilledButton classN="button" title="Proceed to checkout" click={() => {
+				 dispatch(updateIsCheckoutDirect(false));
+				 setTimeout(()=> {
+					router.push('/checkout');
+				 },50)
+			   }}/> </div> : <div>
+				<h3>No Items in your cart</h3>
+			   </div> }
 			</section>
 			<section className="right-col">
 				<div className="flex-row">
@@ -90,7 +114,7 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 					<p className="price primary-text">{summary['total']} INR</p>
 				</div>
 			</section>
-		 </div>
+		 </div> }
 	  </div>	
 	)
 }
