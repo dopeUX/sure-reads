@@ -12,6 +12,7 @@ import ProductTile from "@/app/common/ProductTile/ProductTile";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
 import bookImage from "../../../../public/assets/bible.svg";
 import { updateCurrentBookId, updateDialogState } from "@/app/store/AppSlice";
+import { useRouter } from "next/navigation";
 
 export interface HomeScreenProps {}
 
@@ -26,8 +27,9 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     getBooks();
   }, []);
   const dispatch = useDispatch();
+  const router = useRouter();
   const getBooks = async () => {
-    const response: any = await getAllBooks();
+    const response: any = await getAllBooks({},'');
     console.log(response, "oooooo");
     setBooks([...response.data]);
   };
@@ -81,7 +83,9 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                 );
               })}
           </div>
-          <FilledButton title="Explore library" />
+          <FilledButton title="Explore library" click={()=>{
+            router.push('/library')
+          }}/>
         </section>
         <section className="top-reads">
           <h3>
@@ -106,7 +110,9 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                 );
               })}
           </div>
-          <FilledButton title="Explore library" />
+          <FilledButton title="Explore library" click={() => {
+            router.push('/library')
+          }}/>
         </section>
         <section className="bottom-section global-container">
           <div>

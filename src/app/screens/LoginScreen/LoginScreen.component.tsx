@@ -7,20 +7,12 @@ import tree from '../../../../public/assets/tree.svg';
 import InputBox from "@/app/common/InputBox/InputBox";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
 import { useRouter } from "next/navigation";
+import currentUser from "@/app/Statics/currentUser";
 export interface LoginScreenProps {
 
 }
 
 const saveUser = () => {
-	const currentUser = {
-	  firstName:'shreyash',
-	  lastName:'fz',
-	  email:'testuser1@gmail.com',
-	  address:'Silicon Valley',
-	  state:'Illinois',
-	  pincode:'442401',
-	  phone:'92752799272'	
-	}
 	localStorage.setItem('isLoggedIn', "true");
 	localStorage.setItem('currentUser', JSON.stringify(currentUser));
 }

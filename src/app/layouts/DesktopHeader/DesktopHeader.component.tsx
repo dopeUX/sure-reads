@@ -22,9 +22,11 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = () => {
       </div>
       <div className="right-col-items">
         <Image className="icons cart" src={cartIcon} alt="" onClick={() => {
-           router.push('/cart')
+           router.push('/cart');
         }}/>
-        <Image className="icons" src={profileIcon} alt=""/>
+        <Image className="icons" src={profileIcon} alt="" onClick={() => {
+          router.push('/profile');
+        }}/>
       </div>
     </div>
   );

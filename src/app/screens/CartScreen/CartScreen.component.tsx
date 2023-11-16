@@ -29,7 +29,6 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
         router.push('/login');
 	  } else {
         const ids:any = localStorage.getItem('cartItems');
-		console.log(JSON.stringify(ids), 'eeee')
 		if(ids.length > 0) {
 		 getData(ids);
 		} else {

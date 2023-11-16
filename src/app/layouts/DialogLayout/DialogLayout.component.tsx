@@ -64,7 +64,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                 {bookItem.volumeInfo.subtitle && (
                   <p>{bookItem.volumeInfo.subtitle}</p>
                 )}
-                <p className="authors">by {bookItem.volumeInfo.authors.join(',')}, {bookItem.volumeInfo?.publishedDate && bookItem.volumeInfo?.publishedDate.split('-')[0]}</p>
+                <p className="authors">by {bookItem.volumeInfo.authors.join(', ')}, {bookItem.volumeInfo?.publishedDate && bookItem.volumeInfo?.publishedDate.split('-')[0]}</p>
                 <p className="publication">{bookItem.volumeInfo.publisher}</p>
                 <p className="categories"><span>Categories : </span>{bookItem.volumeInfo?.categories.join(',')}</p>
                 <p className="categories"><span>Pages: </span>{bookItem.volumeInfo.pageCount}</p>

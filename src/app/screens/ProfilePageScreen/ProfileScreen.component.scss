@@ -1,35 +1,40 @@
-.checkout-screen {
-	display: block;	
-    padding: 1rem;
-    text-align: center;
-  .header {
-	width: 80%;
-    display: flex;
-	margin: auto;
-	justify-content: space-between;
-	align-items: center;
-	.logo {
-	  width: 100px;
-	  height: fit-content;	
-	}
+@import '../../globalStyles/globalStyles.scss';
 
-	.back {
-		cursor: pointer;
-	}
-
-	h2 {
-		font-size: 1rem;
-
-	}
+.profile-screen {
+   display: block;	
+   padding: 1rem;
+   text-align: center;
+   .header {
+   width: 80%;
+   display: flex;
+   margin: auto;
+   justify-content: space-between;
+   align-items: center;
+   .logo {
+     width: 100px;
+     height: fit-content;	
+   }
+   
+   .back {
+     cursor: pointer;
+   }
+   
+   h2 {
+   	 font-size: 1rem; 
+   }
   }
-
   .checkout-form {
-	
 	width: 80%;
 	display: block;
 	margin: auto;
 	padding: 1rem 1rem;
 	text-align: left;
+	.btn {
+		margin-left: 1rem;
+		border: 2px solid $base-color;
+		background-color: white;
+		color: $base-color;
+	}
 	.save {
 		margin-left: 1rem;
 	}
