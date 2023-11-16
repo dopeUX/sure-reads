@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { updateCartItems, updateIsCheckoutDirect } from "@/app/store/AppSlice";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
+import ModalDialog from "@/app/common/ModalDialog/ModalDialog";
 export interface CartScreenProps {
 
 }
@@ -37,6 +38,16 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 		}
 	  }
 	},[])
+
+	const deleteCartItem = (id:number|string) => {
+       const items = cartItems.filter((item: any) => {
+		  return item.id !== id;
+	   });
+	   localStorage.setItem('cartItems', JSON.stringify([...items]));
+	   setCartItems([...items]);
+	   dispatch(updateCartItems([...items]));
+	   calculateExpense(items);
+	}
     
 	const calculateExpense = (arr:any) => {
 	  let checkoutTotal = 0;
@@ -81,7 +92,7 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 					cartItemsFromRedux && cartItemsFromRedux?.map((item: any, index: number) => {
 					  return <CartItem key={index} id={item.id} image={item.volumeInfo.imageLinks.thumbnail}
 					  title={item.volumeInfo.title} author={item.volumeInfo.authors.join(', ')}
-					  price={item.saleInfo.listPrice.amount}/>	
+					  price={item.saleInfo.listPrice.amount} deleteItem={(id:any)=>{deleteCartItem(id)}}/>	
 					})
 				 }
 			   </div>

@@ -22,6 +22,10 @@
 .cart-item-tile .item-details .price {
   color: #1E9D51;
 }
+.cart-item-tile .item-details .delete {
+  color: #DB4040;
+  cursor: pointer;
+}
 .cart-item-tile .item-details .quan-sec {
   display: flex;
 }

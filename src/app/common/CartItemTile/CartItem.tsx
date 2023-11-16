@@ -11,9 +11,10 @@ export interface CartItemProps {
   title: string;
   author: string;
   price: number;
+  deleteItem?:any;
 }
 
-const CartItem:React.FC<CartItemProps> = ({id, image, title, author, price}) => {
+const CartItem:React.FC<CartItemProps> = ({id, image, title, author, price, deleteItem}) => {
     const [quantity, setQuantity] = useState<number>(1);
 	const cartItems = useSelector((state:RootState) => {
 		return state.AppReducer.cartItems;
@@ -26,6 +27,9 @@ const CartItem:React.FC<CartItemProps> = ({id, image, title, author, price}) => 
 		<h3>{title}</h3>
 		<p>{author}</p>
 		<p className="price"><span>{price}</span> INR</p>
+		<p className="delete" onClick={() => {
+			deleteItem(id)
+		}}>Delete this item</p>
 	    {/* <div className="quan-sec">
 			<button onClick={()=>{
 				if(quantity!==1) {
