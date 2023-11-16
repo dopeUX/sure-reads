@@ -93,9 +93,12 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 				 },50)
 			   }}/> </div> : <div>
 				<h3>No Items in your cart</h3>
+				{cartItems.length==0 && <FilledButton title="Explore library" click={() =>{
+					router.push('/library');
+				}}/>}
 			   </div> }
 			</section>
-			<section className="right-col">
+			{ cartItems.length>0 && <section className="right-col">
 				<div className="flex-row">
 					<p>Checkout : </p>
 					<p className="price primary-text">{summary['checkoutTotal']} INR</p>
@@ -114,6 +117,7 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 					<p className="price primary-text">{summary['total']} INR</p>
 				</div>
 			</section>
+           }
 		 </div> }
 	  </div>	
 	)

@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
 import { updateCartItems, updateIsCheckoutDirect } from "@/app/store/AppSlice";
 import toast, { Toaster } from 'react-hot-toast';
-
 export interface CheckoutScreenProps{
   
 }
@@ -17,6 +16,7 @@ export interface CheckoutScreenProps{
 const CheckoutScreen:React.FC<CheckoutScreenProps> = ({}) => {
   const router = useRouter()	
   const [currentUser, setCurrentUser] = useState<any>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
   const labelMappings:any = {
 	firstName:'First Name',
@@ -72,13 +72,16 @@ const CheckoutScreen:React.FC<CheckoutScreenProps> = ({}) => {
 	 if(!correct && str) {
 		toast.error(`${str} should not be left empty`);
 	 } else {
+		setIsLoading(true);
 		const ids = cartItems.map((item: any) => {
           return {id:item.id, quantity:1}
 		})
 		dispatch(updateCartItems([]));
 		localStorage.setItem('cartItems', JSON.stringify([]));
 		localStorage.setItem('orderHistory', JSON.stringify(ids));
-		toast.success('Order Saved, Thanks for shopping', {
+		setTimeout(() => {
+           setIsLoading(false)
+		   toast.success('Order Saved, Thanks for shopping', {
 			style: {
 			  textAlign:'center',	
 			  border: '1px solid #22A699',
@@ -90,6 +93,10 @@ const CheckoutScreen:React.FC<CheckoutScreenProps> = ({}) => {
 			  secondary: '#FFFFFF',
 			},
 		});
+		setTimeout(() => {
+          router.push('/')
+		},500)
+		},2000)
 	 }
   }
   return (
@@ -150,10 +157,13 @@ const CheckoutScreen:React.FC<CheckoutScreenProps> = ({}) => {
 					onChangeListener('address', e.target.value);
 				}}/>
 			 </div>  
-			</div>
-			<FilledButton title="Confirm Order" click={() => {
+			</div> 
+			<div className="btn-sec">
+			  <FilledButton title="Confirm Order" click={() => {
 				saveOrder();
-			}}/>
+			  }}/>
+			  {isLoading && <p className="save">Saving your order...</p>}
+			</div>
 		 </div>
 	</div>
   )	

@@ -36,17 +36,21 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
     setBookItem(response.data);
     setIsLoading(false);
   };
+
+  const closeDialog = () => {
+    wrapperContentRef.current.style.animation = 'slide-down cubic-bezier(0.77, 0, 0.175, 1) 1s forwards';
+    setTimeout(() => {
+      dialogRef.current.style.opacity = 0;
+      setTimeout(() => {
+        dispatch(updateDialogState(false));
+      }, 500)
+    },1000)
+  }
   return (
     <div ref={dialogRef} className="dialog-layout index-99">
       <div className="dialog-content">
       <div className="close-btn" onClick={() => {
-                  wrapperContentRef.current.style.animation = 'slide-down cubic-bezier(0.77, 0, 0.175, 1) 1s forwards';
-                  setTimeout(() => {
-                    dialogRef.current.style.opacity = 0;
-                    setTimeout(() => {
-                      dispatch(updateDialogState(false));
-                    }, 500)
-                  },1000)
+            closeDialog();
         }}></div>
         <div ref={wrapperContentRef} className="dialog-layer-wrapper">
           <div className="wrapper-content">
@@ -96,7 +100,13 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                          } else {
                            it.unshift({id:bookItem.id, quantity:1});
                            localStorage.setItem('cartItems', JSON.stringify(it));
-                           toast.success('Product added to cart');
+                           toast('Saving items to your cart...');
+                           setTimeout(() => {
+                            toast.success('Product added to cart');
+                            setTimeout(() => {
+                               closeDialog();
+                            },1000)
+                           }, 2000)
                        }
                       } else {
                         router.push('/login')

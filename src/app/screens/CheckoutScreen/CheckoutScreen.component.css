@@ -28,9 +28,16 @@
   padding: 1rem 1rem;
   text-align: left;
 }
-.checkout-screen .checkout-form button {
+.checkout-screen .checkout-form .save {
+  margin-left: 1rem;
+}
+.checkout-screen .checkout-form .btn-sec {
+  display: flex;
+  align-items: center;
   margin-top: 2rem;
   margin-left: 1rem;
+}
+.checkout-screen .checkout-form button {
   font-size: 0.8rem;
 }
 .checkout-screen .checkout-form h4 {

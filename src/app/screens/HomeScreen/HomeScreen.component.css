@@ -22,6 +22,10 @@ input {
   z-index: 99;
 }
 
+.primary-text {
+  color: #22A699;
+}
+
 .home-screen {
   width: 100%;
   display: flex;
