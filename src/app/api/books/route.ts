@@ -74,9 +74,13 @@ export function GET(request: Request) {
              }
             } else if(objMappingOperators[item] === 'includes') {
                 if(value && advanceFilter[item]) {
+                  console.log(value, 'fffff')
                   advanceFilter[item].forEach((ix:any) => {
-                    value.join('').includes(ix);
-                    checkPass = true;
+                    if(!checkPass){
+                      if(value.includes(ix)) {
+                        checkPass = true;
+                      }
+                    }
                   });
                 }
             } else if(objMappingOperators[item] === 'between') {

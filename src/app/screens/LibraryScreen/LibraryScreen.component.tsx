@@ -18,6 +18,9 @@ import getAllCategories from "@/app/helpers/categoriesService";
 import { pageCountOptions, pdfAvailable, saleabilityOptions, yearOptions } from "@/app/Statics/dropdownOptions";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
 import _ from 'lodash';
+import sortIcon from '../../../../public/assets/sort.svg';
+import Image from "next/image";
+import toast, { Toaster } from 'react-hot-toast';
 export interface LibraryScreenProps {
 	children?: React.ReactNode;
 }
@@ -40,7 +43,9 @@ function sanitizeAdvanceFilter(advanceFilter:any) {
 }
 
 const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
-	const [booksList, setBooksList] = useState<Array<any>>();
+	const [booksList, setBooksList] = useState<Array<any>>([]);
+	const [nonSortedList, setNonSortedList] = useState<any>([]);
+	const [sortCount, setSortCount] = useState<number>(0);
 	const [isLoading, setIsLoading] = useState(true);
 	const [displayState, setDisplayState] = useState(false);
 	const [pagesCount, setPagesCount] = useState(0);
@@ -49,9 +54,21 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 	const totalBooksCount = useSelector((state:RootState) => {
 		return state.AppReducer.totalBooksCount;
 	})
+	const dialogState = useSelector((state:RootState) => {
+		return state.AppReducer.showDialog;
+	})
 	const [searchVal, setSearchVal] = useState('');
 	const [currentPageIndex, setCurrentPageIndex] = useState(1);
 	const [advanceFilter, setAdvanceFilter] = useState<any>({
+		categories:[],
+		price:null,
+		yearFrom:null,
+		yearTo:null,
+		pdf:null,
+        saleability:null,
+		pageCount:null
+	})
+	const [advanceFilterToDisplay, setAdvanceFilterToDisplay] = useState<any>({
 		categories:[],
 		price:null,
 		yearFrom:null,
@@ -69,15 +86,33 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 
 	useEffect(() => {
       setPagesCount(Math.round(totalBooksCount/12));
-	  console.log(totalBooksCount, 'ttttttt')
 	},[totalBooksCount])
 
 	useEffect(() => {
 	  setIsLoading(true);
       getData({},'',(currentPageIndex-1) * 12);
-	  console.log((currentPageIndex-1) * 12, 'ccccc')
 	},[currentPageIndex])
-
+    
+	const resetAdvanceFilter = () => {
+		setAdvanceFilter({
+			categories:[],
+			price:null,
+			yearFrom:null,
+			yearTo:null,
+			pdf:null,
+			saleability:null,
+			pageCount:null
+		})
+		setAdvanceFilterToDisplay({
+			categories:[],
+			price:null,
+			yearFrom:null,
+			yearTo:null,
+			pdf:null,
+			saleability:null,
+			pageCount:null
+		})
+	}
 	const getCats = async () => {
 		setIsLoading(true);
 		const response: any = await getAllCategories();
@@ -90,20 +125,57 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 	const getData = async (advanceSearch:any,search: string, skip?:number) => {
 	  const response:any = await getAllBooks(advanceSearch,search,skip);
 	  setBooksList([...response.data]);
-	//   setPagesCount(Math.round([...response.data].length/12));
+	  setNonSortedList([...response.data]);
 	  dispatch(updateTotalBooksCount(response.totalCount))
 	  setIsLoading(false);
+	}
+	
+	const sortBooksList = () => {
+		const arr:any = [...booksList];
+		if(sortCount === 0) {
+	      const sorted = arr.sort((a: any, b: any) => a.volumeInfo?.pageCount - b.volumeInfo?.pageCount);
+		  setBooksList([...sorted])
+		  setSortCount(pre => pre+1);
+		  showSortOrderToast('List sorted in ascending order with pages count')
+		} else if (sortCount === 1) {
+			const sorted = arr.sort((a: any, b: any) => b.volumeInfo?.pageCount - a.volumeInfo?.pageCount);
+			setBooksList([...sorted])
+			setSortCount(pre => pre+1);
+			showSortOrderToast('List sorted in descending order with pages count')
+		} else if(sortCount === 2) {
+			const sorted = [...nonSortedList];
+			setBooksList([...sorted])
+			setSortCount(0);
+	        showSortOrderToast('List sorted in its original order with pages count')
+		}
+	}
+
+	const showSortOrderToast = (msg: string) => {
+		toast.success(msg, {
+			style: {
+			  textAlign:'center',	
+			  border: '1px solid #22A699',
+			  padding: '16px',
+			  color: '#22A699',
+			},
+			iconTheme: {
+			  primary: '#22A699',
+			  secondary: '#FFFFFF',
+			},
+		  });
 	}
 	return (
 	  <AppLayout>
 		<div className="library-screen">
 		 <DesktopHeader/>
+		 <Toaster position={`${dialogState ? 'top-center' : 'bottom-center'}`}/>
 		 <div className="library-content global-container">
 			<div className="left-filter-col">
 			<div className="dropdown-selector">
 			<p>category</p>
 			<Select
 			  options={categories}
+			  value={advanceFilterToDisplay['categories']}
               placeholder={isLoading && 'loading...'}
               onChange={(e) =>{
 				const vals = e.map((item: any) => {
@@ -111,7 +183,8 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 				})
 				// const _val = vals.length > 0 ? vals : [] 
 				setAdvanceFilter({...advanceFilter, 'categories':[...vals]})
-			  }}
+			    setAdvanceFilterToDisplay({...advanceFilterToDisplay, 'categories':[...e]}); 
+			}}
             //   value={skills}
               isMulti
                />
@@ -123,20 +196,24 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			    className="multiselect"
 			    placeholder="From"
                 options={yearOptions}
+				value={advanceFilterToDisplay['yearFrom']}
 				isClearable
                 onChange={(e: any) => {
 					const _val = e?.value ? e.value : null
 					setAdvanceFilter({...advanceFilter, 'yearFrom': _val})
+					setAdvanceFilterToDisplay({...advanceFilterToDisplay, 'yearFrom':e});
 				}}
                />
                <Select
 			    className="multiselect"
 			    placeholder="To"
+				value={advanceFilterToDisplay['yearTo']}
                 options={yearOptions}
 				isClearable
                 onChange={(e: any) => {
 					const _val = e?.value ? e.value : null
 					setAdvanceFilter({...advanceFilter, 'yearTo': _val})
+				    setAdvanceFilterToDisplay({...advanceFilterToDisplay, 'yearTo':e});
 				}}
                //   value={skills}
                />
@@ -147,10 +224,12 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                <Select
 			    placeholder=""
                 options={pdfAvailable}
+				value={advanceFilterToDisplay['pdf']}
 				isClearable
                 onChange={(e: any) => {
 					const _val = e?.value ? e.value : null
 					setAdvanceFilter({...advanceFilter, 'pdf': _val})
+				    setAdvanceFilterToDisplay({...advanceFilterToDisplay, 'pdf':e})
 				}}
                //   value={skills}
                />
@@ -160,10 +239,12 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                <Select
 			    placeholder=""
                 options={saleabilityOptions}
+				value={advanceFilterToDisplay['saleability']}
 				isClearable
 				onChange={(e: any) => {
 					const _val = e?.value ? e.value : null
-					setAdvanceFilter({...advanceFilter, 'saleability':_val})
+					setAdvanceFilter({...advanceFilter, 'saleability':_val});
+				    setAdvanceFilterToDisplay({...advanceFilterToDisplay, 'saleability':e});
 				}}
                />
 			  </div>
@@ -172,15 +253,18 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                <Select
 			    placeholder=""
                 options={pageCountOptions}
+				value={advanceFilterToDisplay['pageCount']}
 				onChange={(e: any) => {
 					const _val = e?.value ? e.value : null
 					setAdvanceFilter({...advanceFilter, 'pageCount':_val})
+					setAdvanceFilterToDisplay({...advanceFilterToDisplay, 'pageCount':e});
 				}}
                />
 			  </div>
 			  <FilledButton classN="left-btn" title="search" click={()=>{
 				const filter = sanitizeAdvanceFilter(advanceFilter);
 				if(filter) {
+					setSearchVal('');
 					getData(advanceFilter, searchVal)
 					setIsPagination(false);
 				} else {
@@ -195,11 +279,15 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 				console.log(e.target.value, 'xxxxx')
 				setSearchVal(e.target.value);
 				setTimeout(() => {
-					
+					if(e.target.value == "") {
+						getData({},'',0)
+						setIsPagination(true);
+					}
 				},1000)	
 				
 			  }} classN="input" value={searchVal}/>
 			  <FilledButton title="search" click={()=>{
+				    resetAdvanceFilter();
                  if(searchVal===''){
                  	getData({},'',0)
                  	setIsPagination(true);
@@ -207,6 +295,9 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                  	setIsPagination(false);
                     getData({},searchVal);
                  }
+			  }}/>
+			  <Image className="cart-icon" src={sortIcon} alt="" onClick={() => {
+				sortBooksList()
 			  }}/>
 			  </div>
               {searchVal && <p className="search">search results based on "{searchVal}"</p>}

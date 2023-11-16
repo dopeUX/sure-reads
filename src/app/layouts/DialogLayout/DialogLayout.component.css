@@ -22,6 +22,10 @@ input {
   z-index: 99;
 }
 
+.primary-text {
+  color: #22A699;
+}
+
 .dialog-layout {
   width: 100%;
   height: 100vh;
@@ -38,6 +42,16 @@ input {
   height: 100%;
   position: relative;
   transition: all 0.5s ease;
+}
+.dialog-layout .dialog-content .close-btn {
+  position: absolute;
+  top: 3rem;
+  right: 4rem;
+  width: 50px;
+  height: 5px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 .dialog-layout .dialog-content .dialog-layer-wrapper {
   position: absolute;
@@ -91,6 +105,22 @@ input {
   font-size: 1rem;
   color: #6C6C6C;
 }
+.dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .pdf-section {
+  margin-left: 0.3rem;
+}
+.dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .pdf-section h4 {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+.dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .pdf-section div {
+  display: flex;
+}
+.dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .pdf-section .read-now {
+  padding: 0.9rem 2rem;
+  border: 2px solid #22A699;
+  background-color: white;
+  color: #22A699;
+}
 .dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .img-section {
   position: absolute;
   margin-left: 0;
@@ -122,16 +152,6 @@ input {
   margin: auto;
   bottom: 2rem;
   box-shadow: 10px 10px 50px 5px rgba(65, 65, 65, 0.337254902);
-}
-.dialog-layout .dialog-content .dialog-layer-wrapper .wrapper-content .book-item-details .close-btn {
-  position: absolute;
-  top: 0;
-  right: 3rem;
-  width: 50px;
-  height: 5px;
-  cursor: pointer;
-  background-color: #000000;
-  border-radius: 10px;
 }
 @keyframes slide-up {
   from {

@@ -7,7 +7,7 @@
 .library-screen {
   margin: auto;
   display: block;
-  overflow-y: hidden;
+//   overflow-y: hidden;
 
   .library-content {
     display: flex;
@@ -45,19 +45,26 @@
 	.right-col {
 		width: 100%;
 		height: 100%;
-
-		overflow-y: scroll;
        
 		.search-box-wrapper {
 		  display: flex;
-		//   align-items: center;	
+		  align-items: center;	
+		  margin-bottom: 1rem;
 		 .input {
 		 	width: 100%;
+			// margin-left: 1rem;
 			margin-right: 1rem;
-			margin-bottom: 1rem;
+			// margin-bottom: 1rem;
 		}
 		.search {
 			margin-left: .5rem;
+		    margin-right: 1rem;
+		}
+		.cart-icon {
+			margin-left: 1rem;
+			width: 30px;
+			height: 30px;
+			cursor: pointer;
 		}
 	   }
         
@@ -71,7 +78,7 @@
 		  }
 		}
 		.books-tile {
-			overflow-y: scroll;
+			// overflow-y: scroll;
 			background-color: #F2F0F0;
 			padding-top: .5rem;
 			border-radius: 20px;

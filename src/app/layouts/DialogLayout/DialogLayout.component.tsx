@@ -11,6 +11,7 @@ import Image from "next/image";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
 import { updateDialogState } from "@/app/store/AppSlice";
 import { useRouter } from "next/navigation";
+import toast, {Toaster} from "react-hot-toast";
 export interface DialogLayoutProps {
   children?: React.ReactNode;
 }
@@ -29,15 +30,24 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
     setIsLoading(true);
     getData();
   }, []);
+
   const getData = async () => {
     const response: any = await getAllBooks({},'',undefined, currentId);
-    console.log(response, "jjjjj");
     setBookItem(response.data);
     setIsLoading(false);
   };
   return (
     <div ref={dialogRef} className="dialog-layout index-99">
       <div className="dialog-content">
+      <div className="close-btn" onClick={() => {
+                  wrapperContentRef.current.style.animation = 'slide-down cubic-bezier(0.77, 0, 0.175, 1) 1s forwards';
+                  setTimeout(() => {
+                    dialogRef.current.style.opacity = 0;
+                    setTimeout(() => {
+                      dispatch(updateDialogState(false));
+                    }, 500)
+                  },1000)
+        }}></div>
         <div ref={wrapperContentRef} className="dialog-layer-wrapper">
           <div className="wrapper-content">
             {_.isEmpty(bookItem) && isLoading ? (
@@ -53,8 +63,18 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                 <p className="authors">by {bookItem.volumeInfo.authors.join(',')}, {bookItem.volumeInfo?.publishedDate && bookItem.volumeInfo?.publishedDate.split('-')[0]}</p>
                 <p className="publication">{bookItem.volumeInfo.publisher}</p>
                 <p className="categories"><span>Categories : </span>{bookItem.volumeInfo?.categories.join(',')}</p>
+                <p className="categories"><span>Pages: </span>{bookItem.volumeInfo.pageCount}</p>
                 <p className="categories"><span>Language : </span>{bookItem.volumeInfo?.language}</p>
                 <p className="description">{bookItem.volumeInfo?.description}</p>
+                {bookItem.accessInfo?.pdf?.isAvailable && (<section className="pdf-section">
+                    <h4>Pdf is available for this book</h4>
+                    <div>
+                      {/* <button>Download Pdf</button> */}
+                      <button className="read-now" onClick={() => {
+                        window.open(`${bookItem.accessInfo.webReaderLink}`, '_blank');
+                      }}>Read now</button>
+                    </div>
+                </section>)}
                 <section className="img-section">
                  <Image className="image" width={100} height={100} src={bookItem.volumeInfo.imageLinks.thumbnail} alt=""/>
                  <p className={`${bookItem?.saleInfo?.saleability === 'FOR_SALE' ? 'p-green' : 'p-red'}`}>{bookItem.saleInfo.saleability === 'FOR_SALE' ? `${bookItem.saleInfo.listPrice.amount} INR` : 'Not for sale'}</p>
@@ -64,28 +84,26 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                    <FilledButton classN='button' title="Add To Cart" click = {()=>{
                       const isLoggedIn = Boolean(localStorage.getItem('isLoggedIn'));
                       if(isLoggedIn) {
-                        const items:any = localStorage.getItem('cartItems');
-                        let it = [];
-                        if(items) {
+                         const items:any = localStorage.getItem('cartItems');
+                         let it= [];
+                         let isItemAlready = false;
+                         if(items) {
                           it = JSON.parse(items);
                         }
-                        it.unshift({id:bookItem.id, quantity:1});
-                        localStorage.setItem('cartItems', JSON.stringify(it));
-                        alert('item added to cart')
+                         const item = it.find((x:any) => x.id == bookItem.id)
+                         if(item) {
+                           toast.error('Book already in cart!')
+                         } else {
+                           it.unshift({id:bookItem.id, quantity:1});
+                           localStorage.setItem('cartItems', JSON.stringify(it));
+                           toast.success('Product added to cart');
+                       }
                       } else {
                         router.push('/login')
                       }
                   }}/>
                 }
-                <div className="close-btn" onClick={() => {
-                  wrapperContentRef.current.style.animation = 'slide-down cubic-bezier(0.77, 0, 0.175, 1) 1s forwards';
-                  setTimeout(() => {
-                    dialogRef.current.style.opacity = 0;
-                    setTimeout(() => {
-                      dispatch(updateDialogState(false));
-                    }, 500)
-                  },1000)
-                }}></div>
+ 
               </div>
             )}
           </div>
