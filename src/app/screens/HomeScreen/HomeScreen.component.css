@@ -99,6 +99,12 @@ input {
   display: flex;
   margin: auto;
 }
+.home-screen .home-screen-content .top-reads .skeleton-loading {
+  margin: 1rem auto;
+}
+.home-screen .home-screen-content .top-reads .skeleton-loading .load {
+  margin: 0.5rem 1rem;
+}
 .home-screen .home-screen-content .bottom-section {
   display: block;
   justify-content: space-around;

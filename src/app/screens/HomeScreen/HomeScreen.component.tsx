@@ -13,6 +13,8 @@ import FilledButton from "@/app/common/FilledButton/FilledButton";
 import bookImage from "../../../../public/assets/bible.svg";
 import { updateCurrentBookId, updateDialogState } from "@/app/store/AppSlice";
 import { useRouter } from "next/navigation";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export interface HomeScreenProps {}
 
@@ -20,10 +22,12 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   // const name = useSelector((state: RootState) => {
   //   return state.AppReducer.name;
   // });
+  const [isLoading, setIsLoading] = useState(false);
   const [books, setBooks] = useState<Array<any>>([]);
   const randomWeeklyTopics = [1, 2, 3];
   const recommendedTopics = [5, 6, 7];
   useEffect(() => {
+    setIsLoading(true);
     getBooks();
   }, []);
   const dispatch = useDispatch();
@@ -31,6 +35,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const getBooks = async () => {
     const response: any = await getAllBooks({},'');
     setBooks([...response.data]);
+    setIsLoading(false);
   };
   return (
     <div className="home-screen">
@@ -63,7 +68,11 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           <h3>
             <span>Weekly</span> Top Reads.
           </h3>
-          <div className="tiles">
+          {isLoading ? <div className="tiles skeleton-loading">
+           <Skeleton className="load" count={1} width={200} height={250}/>
+           <Skeleton className="load" count={1} width={200} height={250}/>
+           <Skeleton className="load" count={1} width={200} height={250}/>
+          </div> : <div className="tiles">
             {books.length > 0 &&
               randomWeeklyTopics.map((item: number, index: number) => {
                 const it = books[item];
@@ -81,7 +90,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                   />
                 );
               })}
-          </div>
+          </div>}
           <FilledButton title="Explore library" click={()=>{
             router.push('/library')
           }}/>
@@ -90,7 +99,11 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           <h3>
             Most <span>Recommended.</span>
           </h3>
-          <div className="tiles">
+          {isLoading ? <div className="tiles skeleton-loading">
+           <Skeleton className="load" count={1} width={200} height={250}/>
+           <Skeleton className="load" count={1} width={200} height={250}/>
+           <Skeleton className="load" count={1} width={200} height={250}/>
+          </div> : <div className="tiles">
             {books.length > 0 &&
               recommendedTopics.map((item: number, index: number) => {
                 const it = books[item];
@@ -108,7 +121,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
                   />
                 );
               })}
-          </div>
+          </div>}
           <FilledButton title="Explore library" click={() => {
             router.push('/library')
           }}/>

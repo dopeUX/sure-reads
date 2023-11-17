@@ -3,7 +3,6 @@ import _ from 'lodash';
 
 const getAllBooks = async (advanceFilter: any, searchQuery?: string, skip?:number|undefined, id?: string|undefined) => {
    const url = process.env.SERVICE_URL!
-   console.log(url, 'oooooo')
    let axiosConfig:any = {}
    if(id) {
      axiosConfig = {

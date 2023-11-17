@@ -31,7 +31,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = () => {
           }}></div>
         </div>
       </div>
-      <Image loading="lazy" className="header-logo" priority src={logo} alt="" />
+      <Image loading="lazy" className="header-logo" src={logo} alt="" />
       <div className="navbar-items">
         <Navbar items={navItems} />
       </div>

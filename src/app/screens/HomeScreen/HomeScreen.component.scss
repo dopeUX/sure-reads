@@ -75,6 +75,12 @@
             display: flex;
             margin: auto;
          }
+         .skeleton-loading {
+            margin: 1rem auto;
+            .load {
+               margin:.5rem 1rem;
+            }
+         }
        }
 
        .bottom-section {
