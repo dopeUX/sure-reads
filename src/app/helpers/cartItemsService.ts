@@ -9,7 +9,7 @@ const getAllCartItems = async (ids:string) => {
 	}
    }
    const promise = await new Promise(async(resolve,  reject)=>{
-    const res:any = await axios.get('http://localhost:3000/api/cartItems', {params:axiosConfig});
+    const res:any = await axios.get(`${url}/cartItems`, {params:axiosConfig});
     if(res.status===200){
      return resolve(res.data);
     }else{

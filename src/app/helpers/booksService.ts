@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 const getAllBooks = async (advanceFilter: any, searchQuery?: string, skip?:number|undefined, id?: string|undefined) => {
    const url = process.env.SERVICE_URL!
+   console.log(url, 'oooooo')
    let axiosConfig:any = {}
    if(id) {
      axiosConfig = {
@@ -28,7 +29,7 @@ const getAllBooks = async (advanceFilter: any, searchQuery?: string, skip?:numbe
     }
    }
    const promise = await new Promise(async(resolve,  reject)=>{
-    const res:any = await axios.get('http://localhost:3000/api/books', {params:axiosConfig});
+    const res:any = await axios.get(`${url}/books`, {params:axiosConfig});
     if(res.status===200){
      return resolve(res.data);
     }else{
