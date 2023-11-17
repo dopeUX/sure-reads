@@ -340,7 +340,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			  </div>) : (<div className="books-tile">
 				<ul className="books-list">
 				  {
-				   booksList &&	booksList?.map((item:any, index:any) => {
+				   booksList.length>0 ?	booksList?.map((item:any, index:any) => {
 					  return (
 						<ProductTile image={item.volumeInfo.imageLinks?.thumbnail} 
 						title={item.volumeInfo.title} click={() => {
@@ -350,7 +350,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 							},50)
 						}}/>
 					  )	
-					})
+					}) : <p>No books found with the filters applied</p>
 				  }
 				</ul>
 				<div className="pages-count-sec">
