@@ -15,6 +15,7 @@
    .mobile-nav {
      display: none;
      position: absolute;
+     z-index: 990;
 
      @keyframes slide-dow {
       from {
@@ -77,7 +78,7 @@
       width: 90%;
       height: fit-content;
       background-color: rgb(41, 41, 41);
-      z-index:10;
+      z-index: 99999;
       margin-right: 2rem;
       top:-500px;
       // animation:  slide-dow .5s ease forwards;;
