@@ -15,6 +15,8 @@ export interface LoginScreenProps {
 const saveUser = () => {
 	localStorage.setItem('isLoggedIn', "true");
 	localStorage.setItem('currentUser', JSON.stringify(currentUser));
+	localStorage.setItem('cartItems', JSON.stringify([]));
+    localStorage.setItem('orderHistory', JSON.stringify([]));
 }
 
 const LoginScreen:React.FC<LoginScreenProps> = ({}) => {
