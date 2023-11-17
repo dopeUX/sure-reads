@@ -69,12 +69,12 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                 {bookItem.volumeInfo.subtitle && (
                   <p>{bookItem.volumeInfo.subtitle}</p>
                 )}
-                <p className="authors">by {bookItem.volumeInfo.authors.join(', ')}, {bookItem.volumeInfo?.publishedDate && bookItem.volumeInfo?.publishedDate.split('-')[0]}</p>
-                <p className="publication">{bookItem.volumeInfo.publisher}</p>
-                <p className="categories"><span>Categories : </span>{bookItem.volumeInfo?.categories.join(',')}</p>
-                <p className="categories"><span>Pages: </span>{bookItem.volumeInfo.pageCount}</p>
-                <p className="categories"><span>Language : </span>{bookItem.volumeInfo?.language}</p>
-                <p className="description">{bookItem.volumeInfo?.description}</p>
+                {bookItem.volumeInfo?.authors && <p className="authors">by {bookItem.volumeInfo.authors.join(', ')}, {bookItem.volumeInfo?.publishedDate && bookItem.volumeInfo?.publishedDate.split('-')[0]}</p>}
+                {bookItem.volumeInfo?.publisher && <p className="publication">{bookItem.volumeInfo.publisher}</p>}
+                {bookItem.volumeInfo?.categories && <p className="categories"><span>Categories : </span>{bookItem.volumeInfo?.categories.join(',')}</p>}
+                {bookItem.volumeInfo?.pageCount && <p className="categories"><span>Pages: </span>{bookItem.volumeInfo.pageCount}</p>}
+                {bookItem.volumeInfo?.language && <p className="categories"><span>Language : </span>{bookItem.volumeInfo?.language}</p>}
+                {bookItem.volumeInfo?.description && <p className="description">{bookItem.volumeInfo?.description}</p>}
                 {bookItem.accessInfo?.pdf?.isAvailable && (<section className="pdf-section">
                     <h4>Pdf is available for this book</h4>
                     <div>

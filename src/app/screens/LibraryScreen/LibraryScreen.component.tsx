@@ -270,6 +270,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                <Select
 			    placeholder=""
                 options={pageCountOptions}
+				isClearable
 				value={advanceFilterToDisplay['pageCount']}
 				onChange={(e: any) => {
 					const _val = e?.value ? e.value : null

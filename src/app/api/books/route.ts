@@ -58,7 +58,8 @@ export function GET(request: Request) {
         categories:'volumeInfo.categories'
       }
       booksData.forEach((itembook:any, index: number) => {
-         let checkPass = false;
+        let checkPass = false;
+        let passCheckArr:Array<any> = [];
          Object.keys(advanceFilter).forEach((item:any,index:number)=>{
             const keys = objMapping[item].split('.')
             let value:any = itembook;
@@ -66,8 +67,15 @@ export function GET(request: Request) {
                value = value[_key];
             })
             if(objMappingOperators[item] === 'equals') {
-             if(value === (advanceFilter[item])){
+             if(value) { 
+             if(value === advanceFilter[item]){
                checkPass = true;
+               passCheckArr.push(true);
+             } else {
+               checkPass = false;
+               passCheckArr.push(false)
+             }} else {
+              passCheckArr.push(false);
              }
             } else if(objMappingOperators[item] === 'includes') {
                 if(value && advanceFilter[item]) {
@@ -75,9 +83,16 @@ export function GET(request: Request) {
                     if(!checkPass){
                       if(value.includes(ix)) {
                         checkPass = true;
+                        passCheckArr.push(true);
+                      } else {
+                        checkPass = false;
+                        passCheckArr.push(false);
                       }
                     }
                   });
+                } else {
+                  passCheckArr.push(false);
+                  checkPass = false;
                 }
             } else if(objMappingOperators[item] === 'between') {
                const from = advanceFilter[item].split(' - ')[0];
@@ -85,25 +100,48 @@ export function GET(request: Request) {
                if(value) {
                 if(Number(value) >=from && Number(value)<=to) {
                   checkPass = true;
+                  passCheckArr.push(true)
+                } else {
+                  checkPass = false;
+                  passCheckArr.push(false);
                 }
+              } else {
+                checkPass = false;
+                passCheckArr.push(false)
               }
             } else if(objMappingOperators[item] === 'greaterThanEqualTo') {
               if(value) {
                if(Number(value.split('-')[0]) >= Number(advanceFilter[item])) {
                  checkPass = true;
+                 passCheckArr.push(true);
+               } else {
+                checkPass = false;
+                passCheckArr.push(false);
                }
+              } else {
+                checkPass = false;
+                passCheckArr.push(false);
               }
             } else if(objMappingOperators[item] === 'lessThanEqualTo') {
               if(value) {
                 if(Number(value.split('-')[0]) <= Number(advanceFilter[item])) {
                   checkPass = true;
+                  passCheckArr.push(true);
+                } else {
+                  checkPass = false;
+                  passCheckArr.push(false);
                 }
+              } else {
+                checkPass = false;
+                passCheckArr.push(false);
               }
             }
          })
-         if(checkPass) {
+         if(!passCheckArr.includes(false)) {
            datas.push(itembook);
-         }
+           passCheckArr = [];
+           checkPass = false;
+        }
       })
       return NextResponse.json({data:datas, totalCount:datas.length});
     }
