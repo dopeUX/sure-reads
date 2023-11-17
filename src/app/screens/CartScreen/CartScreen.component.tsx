@@ -7,11 +7,14 @@ import logo from '../../../../public/assets/sure-reads-logo.svg';
 import Image from "next/image";
 import CartItem from "@/app/common/CartItemTile/CartItem";
 import FilledButton from "@/app/common/FilledButton/FilledButton";
-import { useDispatch } from "react-redux";
-import { updateCartItems, updateIsCheckoutDirect } from "@/app/store/AppSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCartItems, updateCurrentDeleteItemId, updateIsCheckoutDirect, updateIsDeleteClicked } from "@/app/store/AppSlice";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
 import ModalDialog from "@/app/common/ModalDialog/ModalDialog";
+import { RootState } from "@/app/store/store";
+import toast, { Toaster } from 'react-hot-toast';
+
 export interface CartScreenProps {
 
 }
@@ -23,6 +26,12 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
     const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(true);
 	const [summary, setSummary] = useState<any>({});
+	const isDeleteClicked = useSelector((state:RootState) => {
+		return state.AppReducer.isDeleteClicked;
+	})
+	const currentDeleteItemId = useSelector((state: RootState) => {
+		return state.AppReducer.currentDeleteItemId;
+	})
 	useEffect(() => {
 	  setIsLoading(true);	
       const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -39,6 +48,12 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 	  }
 	},[])
 
+	useEffect(() => {
+      if(isDeleteClicked && currentDeleteItemId) {
+		deleteCartItem(currentDeleteItemId);
+	  }
+	},[isDeleteClicked])
+
 	const deleteCartItem = (id:number|string) => {
        const items = cartItems.filter((item: any) => {
 		  return item.id !== id;
@@ -47,6 +62,22 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 	   setCartItems([...items]);
 	   dispatch(updateCartItems([...items]));
 	   calculateExpense(items);
+	   toast.success('Item removed from cart', {
+		style: {
+		  textAlign:'center',	
+		  border: '1px solid #22A699',
+		  padding: '16px',
+		  color: '#22A699',
+		},
+		iconTheme: {
+		  primary: '#22A699',
+		  secondary: '#FFFFFF',
+		},
+	  });
+	   setTimeout(()=>{
+		dispatch(updateIsDeleteClicked(false));
+		dispatch(updateCurrentDeleteItemId(undefined));
+	   },50)
 	}
     
 	const calculateExpense = (arr:any) => {
@@ -72,6 +103,7 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 	}
 	return (
 	  <div className="cart-screen global-container">
+		<Toaster position="bottom-center"/>
          <div className="header">
           <Image className="logo" src={logo} alt=""/>
 		  <h2 className="primary-text back" onClick={() => {

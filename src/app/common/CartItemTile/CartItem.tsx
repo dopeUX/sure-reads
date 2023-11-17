@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import './CartItem.css';
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
-import { updateCartItems } from "@/app/store/AppSlice";
+import { updateCartItems, updateCurrentDeleteItemId, updateIsModalDialog } from "@/app/store/AppSlice";
 
 export interface CartItemProps {
   id: number;	
@@ -19,6 +19,9 @@ const CartItem:React.FC<CartItemProps> = ({id, image, title, author, price, dele
 	const cartItems = useSelector((state:RootState) => {
 		return state.AppReducer.cartItems;
 	})
+	const isModalDialog = useSelector((state: RootState) => {
+		return state.AppReducer.isModalDialog;
+	})
 	const dispatch = useDispatch();
 	return (
 	<div className="cart-item-tile">
@@ -27,9 +30,13 @@ const CartItem:React.FC<CartItemProps> = ({id, image, title, author, price, dele
 		<h3>{title}</h3>
 		<p>{author}</p>
 		<p className="price"><span>{price}</span> INR</p>
-		<p className="delete" onClick={() => {
-			deleteItem(id)
-		}}>Delete this item</p>
+		{deleteItem && <p className="delete" onClick={() => {
+		   if(!isModalDialog) {
+			 dispatch(updateCurrentDeleteItemId(id));
+		     dispatch(updateIsModalDialog(true));
+		   }
+			// deleteItem(id)
+		}}>Delete this item</p>}
 	    {/* <div className="quan-sec">
 			<button onClick={()=>{
 				if(quantity!==1) {

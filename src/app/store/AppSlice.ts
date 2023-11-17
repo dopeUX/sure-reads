@@ -8,6 +8,9 @@ interface stateTypes {
   totalBooksCount:number;
   isCheckoutDirect:boolean;
   orderHistory:Array<any>;
+  currentDeleteItemId:number|undefined;
+  isModalDialog:boolean;
+  isDeleteClicked: boolean;
 }
 
 const initialState:stateTypes = {
@@ -16,7 +19,10 @@ const initialState:stateTypes = {
   cartItems:[],
   totalBooksCount:0,
   isCheckoutDirect:true,
-  orderHistory:[]
+  orderHistory:[],
+  currentDeleteItemId:undefined,
+  isModalDialog: false,
+  isDeleteClicked: false
 }
 
 export const AppSlice = createSlice({
@@ -40,10 +46,19 @@ export const AppSlice = createSlice({
       },
       updateOrderHistory:(state, action) => {
         state.orderHistory = action.payload
+      },
+      updateIsModalDialog:(state,action) => {
+        state.isModalDialog = action.payload;
+      },
+      updateCurrentDeleteItemId:(state, action) => {
+        state.currentDeleteItemId = action.payload;
+      },
+      updateIsDeleteClicked:(state, action) => {
+        state.isDeleteClicked = action.payload;
       }
     }
 });
 
 
-export const {updateDialogState,updateTotalBooksCount,updateOrderHistory, updateIsCheckoutDirect, updateCurrentBookId, updateCartItems} = AppSlice.actions;
+export const {updateDialogState, updateIsDeleteClicked, updateCurrentDeleteItemId,updateIsModalDialog, updateTotalBooksCount,updateOrderHistory, updateIsCheckoutDirect, updateCurrentBookId, updateCartItems} = AppSlice.actions;
 export default AppSlice.reducer;

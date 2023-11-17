@@ -21,6 +21,9 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
   const currentId = useSelector((state: RootState) => {
     return state.AppReducer.currentBookId;
   });
+  const dialogState = useSelector((state: RootState) => {
+    return state.AppReducer.showDialog;
+  })
   const router = useRouter()
   const dispatch = useDispatch();
   const dialogRef: any = useRef();
@@ -38,6 +41,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
   };
 
   const closeDialog = () => {
+    if(dialogState) {
     wrapperContentRef.current.style.animation = 'slide-down cubic-bezier(0.77, 0, 0.175, 1) 1s forwards';
     setTimeout(() => {
       dialogRef.current.style.opacity = 0;
@@ -45,6 +49,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
         dispatch(updateDialogState(false));
       }, 500)
     },1000)
+   }
   }
   return (
     <div ref={dialogRef} className="dialog-layout index-99">
