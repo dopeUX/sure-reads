@@ -88,6 +88,12 @@ input {
   height: 30px;
   cursor: pointer;
 }
+.library-screen .library-content .right-col .search-box-wrapper .refresh-icon {
+  margin-left: 1rem;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
 .library-screen .library-content .right-col .skeleton-grid {
   display: grid;
   grid-gap: 5px;

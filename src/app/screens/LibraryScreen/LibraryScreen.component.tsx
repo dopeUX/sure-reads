@@ -19,6 +19,7 @@ import { pageCountOptions, pdfAvailable, saleabilityOptions, yearOptions } from 
 import FilledButton from "@/app/common/FilledButton/FilledButton";
 import _ from 'lodash';
 import sortIcon from '../../../../public/assets/sort.svg';
+import refreshIcon from '../../../../public/assets/refresh.svg';
 import Image from "next/image";
 import toast, { Toaster } from 'react-hot-toast';
 export interface LibraryScreenProps {
@@ -59,6 +60,15 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 	})
 	const [searchVal, setSearchVal] = useState('');
 	const [currentPageIndex, setCurrentPageIndex] = useState(1);
+	const defaultAdvanceFilterValue = {
+		categories:[],
+		price:null,
+		yearFrom:null,
+		yearTo:null,
+		pdf:null,
+        saleability:null,
+		pageCount:null
+	}
 	const [advanceFilter, setAdvanceFilter] = useState<any>({
 		categories:[],
 		price:null,
@@ -163,6 +173,13 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			  secondary: '#FFFFFF',
 			},
 		  });
+	}
+	const resetAllFilters = () => {
+		setIsLoading(true);
+		showSortOrderToast('All Filters Removed')
+		resetAdvanceFilter();
+		setSearchVal('');
+		getData({},'',0);
 	}
 	return (
 	  <AppLayout>
@@ -298,6 +315,14 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			  }}/>
 			  <Image className="cart-icon" src={sortIcon} alt="" onClick={() => {
 				sortBooksList()
+			  }}/>
+			  <Image className="refresh-icon" src={refreshIcon} alt="" onClick={() => {
+				console.log(advanceFilter, defaultAdvanceFilterValue, 'aaaaa')
+				if(_.isEqual(advanceFilter, defaultAdvanceFilterValue) && searchVal === '') {
+				  toast.error('No Filters Applied')
+				} else {
+				  resetAllFilters();
+				}
 			  }}/>
 			  </div>
               {searchVal && <p className="search">search results based on "{searchVal}"</p>}
