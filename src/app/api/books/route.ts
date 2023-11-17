@@ -85,8 +85,8 @@ export function GET(request: Request) {
                         checkPass = true;
                         passCheckArr.push(true);
                       } else {
-                        checkPass = false;
-                        passCheckArr.push(false);
+                        // checkPass = false;
+                        // passCheckArr.push(false);
                       }
                     }
                   });
@@ -137,7 +137,7 @@ export function GET(request: Request) {
               }
             }
          })
-         if(!passCheckArr.includes(false)) {
+         if(passCheckArr.length>0 && !passCheckArr.includes(false)) {
            datas.push(itembook);
            passCheckArr = [];
            checkPass = false;
