@@ -22,6 +22,20 @@ const navItems: Array<any> = [
     route:'/about'
   },
 ]
+export const extraNavItems: Array<any> = [
+  {
+    id: 4,
+    title: 'Profile',
+    key:'profile',
+    route:'/profile'
+  }, 
+  {
+    id: 5,
+    title: 'Cart',
+    key:'cart',
+    route:'/cart'
+  },
+]
 
 
 export default navItems;

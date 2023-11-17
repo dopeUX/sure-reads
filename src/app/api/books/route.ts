@@ -11,7 +11,6 @@ export function GET(request: Request) {
   let advanceFilter:any = searchParams.get('advanceFilter');
   let books = [];
   advanceFilter = JSON.parse(advanceFilter);
-  console.log(advanceFilter, 'hhhh')
 
   if (id) {
     const bookItem = booksData.find(x => x.id.toString() === id.toString())
@@ -41,7 +40,6 @@ export function GET(request: Request) {
       return NextResponse.json({data:datas, totalCount:datas.length});
     }
     if(advanceFilter) {
-      console.log(advanceFilter,'hhhhhh')
       let datas:Array<any>=[]
       const objMappingOperators:any = {
         pdf:'equals',
@@ -67,14 +65,12 @@ export function GET(request: Request) {
             keys.forEach((_key:any) => {
                value = value[_key];
             })
-            // console.log(value,itembook,keys, 'oooooo333333')
             if(objMappingOperators[item] === 'equals') {
              if(value === (advanceFilter[item])){
                checkPass = true;
              }
             } else if(objMappingOperators[item] === 'includes') {
                 if(value && advanceFilter[item]) {
-                  console.log(value, 'fffff')
                   advanceFilter[item].forEach((ix:any) => {
                     if(!checkPass){
                       if(value.includes(ix)) {
@@ -109,7 +105,6 @@ export function GET(request: Request) {
            datas.push(itembook);
          }
       })
-      // console.log(datas,'mmmmmm')
       return NextResponse.json({data:datas, totalCount:datas.length});
     }
     return NextResponse.json({data:booksData, totalCount: booksData.length});

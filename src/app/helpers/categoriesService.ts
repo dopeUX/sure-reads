@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const getAllCategories = async () => {
-//    console.log(axiosConfig, 'uuuu2')
    const promise = await new Promise(async(resolve,  reject)=>{
     const res:any = await axios.get('http://localhost:3000/api/categories');
     if(res.status===200){

@@ -27,7 +27,6 @@ const getAllBooks = async (advanceFilter: any, searchQuery?: string, skip?:numbe
       axiosConfig['search'] = searchQuery
     }
    }
-   console.log(axiosConfig,'yyyyy33333333')
    const promise = await new Promise(async(resolve,  reject)=>{
     const res:any = await axios.get('http://localhost:3000/api/books', {params:axiosConfig});
     if(res.status===200){

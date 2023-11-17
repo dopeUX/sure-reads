@@ -47,7 +47,6 @@ const OrdersScreen = ({}) => {
 	}, [])
 	const getData = async (ids: string) => {
 		const response: any = await getAllCartItems(ids);
-		console.log(response, 'uuuuu')
 		setOrders([...response.data]);
         dispatch(updateOrderHistory([...response.data]));
 		setIsLoading(false);

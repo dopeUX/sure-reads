@@ -293,7 +293,6 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			<div className="right-col">
 			  <div className="search-box-wrapper">	
 			  <InputBox holderText="search library..." icon change={(e:any)=>{
-				console.log(e.target.value, 'xxxxx')
 				setSearchVal(e.target.value);
 				setTimeout(() => {
 					if(e.target.value == "") {
@@ -317,7 +316,6 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 				sortBooksList()
 			  }}/>
 			  <Image className="refresh-icon" src={refreshIcon} alt="" onClick={() => {
-				console.log(advanceFilter, defaultAdvanceFilterValue, 'aaaaa')
 				if(_.isEqual(advanceFilter, defaultAdvanceFilterValue) && searchVal === '') {
 				  toast.error('No Filters Applied')
 				} else {

@@ -22,7 +22,7 @@ const ModalDialog:React.FC<ModalDialogProps> = ({}) => {
    },[]);
    const closeModal = () => {
     if(modalRef && isModalDialog) {
-      modalRef.current.style.animation = 'zoom-out cubic-bezier(0.77, 0, 0.175, 1) 1s forwards'
+      modalRef.current.style.animation = 'zoom-out cubic-bezier(0.77, 0, 0.175, 1) .5s forwards'
       setTimeout(() => {
         dialogRef.current.style.opacity = 0;
       },500)

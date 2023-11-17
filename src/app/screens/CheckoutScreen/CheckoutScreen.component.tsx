@@ -34,7 +34,6 @@ const CheckoutScreen:React.FC<CheckoutScreenProps> = ({}) => {
 	return state.AppReducer.isCheckoutDirect;
   })
   useEffect(() => {
-   console.log(cartItems, 'iiiiiii')	
    const isLoggedIn = localStorage.getItem('isLoggedIn');
    
    if(!isLoggedIn) {

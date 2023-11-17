@@ -83,18 +83,15 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 	const calculateExpense = (arr:any) => {
 	  let checkoutTotal = 0;
 	  let totalPrice = 0;
-	  console.log(cartItems, 'rrrrr')
 	  arr.forEach((item: any) => {
 		 const price = item.saleInfo.listPrice.amount;
 		 checkoutTotal = checkoutTotal + price;
 	  })
 	  totalPrice = checkoutTotal + 180;
-	//   console.log(priceTotal, 'rrrr')
 	  setSummary({...summary, 'checkoutTotal':checkoutTotal, 'total':totalPrice})
 	}
 	const getData = async (ids: string) => {
 		const response: any = await getAllCartItems(ids);
-		console.log(response, 'uuuuu')
 		setCartItems([...response.data]);
 		setCartItemsFromRedux([...response.data]);
         dispatch(updateCartItems([...response.data]));

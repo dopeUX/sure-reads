@@ -8,7 +8,6 @@ export function GET(request: Request) {
   // const limit = searchParams.get('limit');
 
   if (ids) {
-	console.log(ids, 'eeeeee')
 	ids = JSON.parse(ids)
     // ids = ids.split(','); 
 	ids.forEach((_id: any) => {

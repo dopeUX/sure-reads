@@ -10,7 +10,6 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
   let inx: number = 0;
   const pathName = usePathname();
   const [activeIndex, setActiveIndex] = useState<number>();
-  console.log(pathName, "ppppp");
 
   useLayoutEffect(() => {
     const _index = items?.findIndex((x) => x.route === pathName)!;
@@ -45,5 +44,5 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
 export default Navbar;
 
 export async function getServerSideProps() {
-  console.log(process.env.USER, "pppppp");
+
 }

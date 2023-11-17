@@ -36,6 +36,10 @@ input {
   width: 100%;
   display: block;
 }
+.home-screen .home-screen-content .desktop-head {
+  width: 100%;
+  background-color: white;
+}
 .home-screen .home-screen-content .hero-section {
   display: flex;
   justify-content: space-around;
@@ -126,4 +130,758 @@ input {
 }
 .home-screen .home-screen-content .bottom-section h3 span {
   color: #22A699;
+}
+
+@media only screen and (max-width: 1150px) {
+  .home-screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+  }
+  .home-screen .home-screen-content {
+    width: 100%;
+    display: block;
+  }
+  .home-screen .home-screen-content .desktop-head {
+    width: 100%;
+    background-color: white;
+  }
+  .home-screen .home-screen-content .hero-section {
+    display: flex;
+    justify-content: space-around;
+  }
+  .home-screen .home-screen-content .hero-section .hero-image {
+    width: 17rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 1rem 2rem 0 5rem;
+  }
+  .home-screen .home-screen-content .hero-section .right-col {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: auto;
+    display: block;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col p {
+    width: 500px;
+    font-size: 1.7rem;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col h4 {
+    font-size: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec {
+    padding-left: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 {
+    margin-left: 3rem;
+    width: 40%;
+    font-size: 3.5rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .readscape-sec p {
+    width: 60%;
+    font-size: 1.2rem;
+    margin-left: 3rem;
+  }
+  .home-screen .home-screen-content .top-reads {
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 {
+    font-size: 1.8rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .top-reads .tiles {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin: auto;
+  }
+  .home-screen .home-screen-content .bottom-section {
+    display: block;
+    justify-content: space-around;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .bottom-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-screen .home-screen-content .bottom-section div .image {
+    width: 500px;
+    margin: 6rem auto auto 5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 {
+    text-align: right;
+    margin: 2rem 4rem auto 3rem;
+    width: 30%;
+    font-size: 5rem;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .bottom-section h3 {
+    margin-right: 5rem;
+    font-size: 2rem;
+  }
+  .home-screen .home-screen-content .bottom-section h3 span {
+    color: #22A699;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .home-screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+  }
+  .home-screen .home-screen-content {
+    width: 100%;
+    display: block;
+  }
+  .home-screen .home-screen-content .desktop-head {
+    width: 100%;
+    background-color: white;
+  }
+  .home-screen .home-screen-content .hero-section {
+    display: flex;
+    justify-content: space-around;
+  }
+  .home-screen .home-screen-content .hero-section .hero-image {
+    width: 17rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 1rem 2rem 0 5rem;
+  }
+  .home-screen .home-screen-content .hero-section .right-col {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: auto;
+    display: block;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col p {
+    width: 500px;
+    font-size: 1.7rem;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col h4 {
+    font-size: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec {
+    padding-left: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 {
+    margin-left: 3rem;
+    width: 40%;
+    font-size: 3.5rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .readscape-sec p {
+    width: 60%;
+    font-size: 1.2rem;
+    margin-left: 3rem;
+  }
+  .home-screen .home-screen-content .top-reads {
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 {
+    font-size: 1.8rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .top-reads .tiles {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin: auto;
+  }
+  .home-screen .home-screen-content .bottom-section {
+    display: block;
+    justify-content: space-around;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .bottom-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-screen .home-screen-content .bottom-section div .image {
+    width: 500px;
+    margin: 6rem auto auto 5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 {
+    text-align: right;
+    margin: 2rem 4rem auto 3rem;
+    width: 30%;
+    font-size: 4rem;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .bottom-section h3 {
+    margin-right: 5rem;
+    font-size: 1.5rem;
+  }
+  .home-screen .home-screen-content .bottom-section h3 span {
+    color: #22A699;
+  }
+}
+@media only screen and (max-width: 970px) {
+  .home-screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+  }
+  .home-screen .home-screen-content {
+    width: 100%;
+    display: block;
+  }
+  .home-screen .home-screen-content .desktop-head {
+    width: 100%;
+    background-color: white;
+  }
+  .home-screen .home-screen-content .hero-section {
+    display: flex;
+    justify-content: space-around;
+  }
+  .home-screen .home-screen-content .hero-section .hero-image {
+    width: 13rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 1rem 2rem 0 5rem;
+  }
+  .home-screen .home-screen-content .hero-section .right-col {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: auto;
+    display: block;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col p {
+    width: 350px;
+    font-size: 1.2rem;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col h4 {
+    font-size: 1rem;
+  }
+  .home-screen .home-screen-content .readscape-sec {
+    padding-left: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 {
+    margin-left: 3rem;
+    width: 40%;
+    font-size: 2.8rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .readscape-sec p {
+    width: 60%;
+    font-size: 1.2rem;
+    margin-left: 3rem;
+  }
+  .home-screen .home-screen-content .top-reads {
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 {
+    font-size: 1.8rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .top-reads .tiles {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin: auto;
+  }
+  .home-screen .home-screen-content .bottom-section {
+    display: block;
+    justify-content: space-around;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .bottom-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-screen .home-screen-content .bottom-section div .image {
+    width: 500px;
+    margin: 6rem auto auto 5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 {
+    text-align: right;
+    margin: 2rem 4rem auto 3rem;
+    width: 30%;
+    font-size: 4rem;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .bottom-section h3 {
+    margin-right: 5rem;
+    font-size: 1.5rem;
+  }
+  .home-screen .home-screen-content .bottom-section h3 span {
+    color: #22A699;
+  }
+}
+@media only screen and (max-width: 890px) {
+  .home-screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+  }
+  .home-screen .home-screen-content {
+    width: 100%;
+    display: block;
+  }
+  .home-screen .home-screen-content .desktop-head {
+    width: 100%;
+    background-color: white;
+  }
+  .home-screen .home-screen-content .hero-section {
+    display: flex;
+    justify-content: space-around;
+  }
+  .home-screen .home-screen-content .hero-section .hero-image {
+    width: 13rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 1rem 2rem 0 5rem;
+  }
+  .home-screen .home-screen-content .hero-section .right-col {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: auto;
+    display: block;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col p {
+    width: 350px;
+    font-size: 1.2rem;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col h4 {
+    font-size: 1rem;
+  }
+  .home-screen .home-screen-content .readscape-sec {
+    padding-left: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 {
+    margin-left: 3rem;
+    width: 40%;
+    font-size: 2.8rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .readscape-sec p {
+    width: 60%;
+    font-size: 1.2rem;
+    margin-left: 3rem;
+  }
+  .home-screen .home-screen-content .top-reads {
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 {
+    font-size: 1.8rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .top-reads .tiles {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin: auto;
+  }
+  .home-screen .home-screen-content .bottom-section {
+    display: block;
+    justify-content: space-around;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .bottom-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-screen .home-screen-content .bottom-section div .image {
+    width: 300px;
+    margin: 6rem auto auto 5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 {
+    text-align: right;
+    margin: 2rem 4rem auto 3rem;
+    width: 30%;
+    font-size: 2.8rem;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .bottom-section h3 {
+    margin-right: 5rem;
+    font-size: 1rem;
+  }
+  .home-screen .home-screen-content .bottom-section h3 span {
+    color: #22A699;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .home-screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+  }
+  .home-screen .home-screen-content {
+    width: 100%;
+    display: block;
+  }
+  .home-screen .home-screen-content .hero-section {
+    display: flex;
+    justify-content: space-around;
+  }
+  .home-screen .home-screen-content .hero-section .hero-image {
+    width: 13rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 1rem 2rem 0 5rem;
+  }
+  .home-screen .home-screen-content .hero-section .right-col {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: auto;
+    display: block;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col p {
+    width: 350px;
+    font-size: 1.2rem;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col h4 {
+    font-size: 1rem;
+  }
+  .home-screen .home-screen-content .readscape-sec {
+    padding-left: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 {
+    margin-left: 3rem;
+    width: 40%;
+    font-size: 2.8rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .readscape-sec p {
+    width: 60%;
+    font-size: 1.2rem;
+    margin-left: 3rem;
+  }
+  .home-screen .home-screen-content .top-reads {
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 {
+    font-size: 1.8rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .top-reads .tiles {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin: auto;
+  }
+  .home-screen .home-screen-content .bottom-section {
+    display: block;
+    justify-content: space-around;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .bottom-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-screen .home-screen-content .bottom-section div .image {
+    width: 300px;
+    margin: 6rem auto auto 5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 {
+    text-align: right;
+    margin: 2rem 4rem auto 3rem;
+    width: 30%;
+    font-size: 2.8rem;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .bottom-section h3 {
+    margin-right: 5rem;
+    font-size: 1rem;
+  }
+  .home-screen .home-screen-content .bottom-section h3 span {
+    color: #22A699;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .home-screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+  }
+  .home-screen .home-screen-content {
+    width: 100%;
+    display: block;
+  }
+  .home-screen .home-screen-content .hero-section {
+    display: flex;
+    justify-content: space-around;
+  }
+  .home-screen .home-screen-content .hero-section .hero-image {
+    width: 10rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 1rem 2rem 0 3rem;
+  }
+  .home-screen .home-screen-content .hero-section .right-col {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: auto;
+    display: block;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col p {
+    width: 300px;
+    font-size: 0.8rem;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .hero-section .right-col h4 {
+    font-size: 0.7rem;
+  }
+  .home-screen .home-screen-content .readscape-sec {
+    padding-left: 0.5rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 {
+    margin-left: 1rem;
+    width: 40%;
+    font-size: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .readscape-sec p {
+    width: 60%;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+  }
+  .home-screen .home-screen-content .top-reads {
+    display: block;
+    margin: auto;
+    text-align: left;
+    margin-top: 4rem;
+    margin-left: 3rem;
+  }
+  .home-screen .home-screen-content .top-reads button {
+    font-size: 0.8rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 {
+    font-size: 1.8rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .top-reads .tiles {
+    justify-content: start;
+    text-align: left;
+    display: flex;
+    margin-left: 0rem;
+    overflow-x: scroll;
+    padding: 0;
+    margin-right: auto;
+  }
+  .home-screen .home-screen-content .bottom-section {
+    display: block;
+    justify-content: space-around;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .bottom-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-screen .home-screen-content .bottom-section div .image {
+    width: 200px;
+    margin: 6rem auto auto 5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 {
+    text-align: right;
+    margin: 2rem 2rem auto 3rem;
+    width: 30%;
+    font-size: 2.3rem;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .bottom-section h3 {
+    margin-right: 2rem;
+    font-size: 0.8rem;
+  }
+  .home-screen .home-screen-content .bottom-section h3 span {
+    color: #22A699;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .home-screen {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+  }
+  .home-screen .home-screen-content {
+    width: 100%;
+    display: block;
+  }
+  .home-screen .home-screen-content .hero-section {
+    display: flex;
+    justify-content: space-around;
+  }
+  .home-screen .home-screen-content .hero-section .hero-image {
+    display: none;
+    width: 10rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 1rem 2rem 0 3rem;
+  }
+  .home-screen .home-screen-content .hero-section .right-col {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: auto;
+    display: block;
+    text-align: center;
+  }
+  .home-screen .home-screen-content .hero-section .right-col p {
+    width: 400px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .home-screen .home-screen-content .hero-section .right-col h4 {
+    font-size: 1rem;
+  }
+  .home-screen .home-screen-content .readscape-sec {
+    padding-left: 0.5rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 {
+    margin-left: 1rem;
+    width: 40%;
+    font-size: 2rem;
+  }
+  .home-screen .home-screen-content .readscape-sec h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .readscape-sec p {
+    width: 60%;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+  }
+  .home-screen .home-screen-content .top-reads {
+    display: block;
+    margin: auto;
+    text-align: left;
+    margin-top: 4rem;
+    margin-left: 3rem;
+  }
+  .home-screen .home-screen-content .top-reads button {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 {
+    font-size: 1.8rem;
+  }
+  .home-screen .home-screen-content .top-reads h3 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .top-reads .tiles {
+    justify-content: start;
+    text-align: left;
+    display: flex;
+    margin-left: 0rem;
+    overflow-x: scroll;
+    padding: 0;
+    margin-right: auto;
+  }
+  .home-screen .home-screen-content .bottom-section {
+    display: block;
+    justify-content: space-around;
+    text-align: right;
+  }
+  .home-screen .home-screen-content .bottom-section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-screen .home-screen-content .bottom-section div .image {
+    width: 200px;
+    margin: 6rem auto auto 5rem;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 {
+    text-align: right;
+    margin: 2rem 2rem auto 3rem;
+    width: 30%;
+    font-size: 2.3rem;
+  }
+  .home-screen .home-screen-content .bottom-section div h2 span {
+    color: #22A699;
+  }
+  .home-screen .home-screen-content .bottom-section h3 {
+    margin-right: 2rem;
+    font-size: 0.8rem;
+  }
+  .home-screen .home-screen-content .bottom-section h3 span {
+    color: #22A699;
+  }
 }/*# sourceMappingURL=HomeScreen.component.css.map */

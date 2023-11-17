@@ -3,12 +3,26 @@
   height: -moz-fit-content;
   height: fit-content;
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
   border-radius: 20px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 0.5rem 2rem;
+}
+.desktop-header .mobile-nav {
+  display: none;
+  position: absolute;
+}
+@keyframes slide-dow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .desktop-header .header-logo {
   width: 100px;
@@ -29,4 +43,96 @@
 .desktop-header .right-col-items .cart {
   width: 38px;
   height: 38px;
+}
+.desktop-header .right-col-items .menu {
+  display: none;
+  width: 45px;
+  height: 45px;
+}
+
+@media only screen and (max-width: 800px) {
+  .desktop-header {
+    width: 95%;
+    height: -moz-fit-content;
+    height: fit-content;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 0.5rem 2rem;
+  }
+  .desktop-header .mobile-nav {
+    display: block;
+    width: 90%;
+    height: -moz-fit-content;
+    height: fit-content;
+    background-color: rgb(41, 41, 41);
+    z-index: 10;
+    margin-right: 2rem;
+    top: -500px;
+  }
+  @keyframes slide-dow {
+    from {
+      top: -500px;
+    }
+    to {
+      top: 0;
+    }
+  }
+  @keyframes up {
+    from {
+      top: 0;
+    }
+    to {
+      top: -500px;
+    }
+  }
+  .desktop-header .mobile-nav .content {
+    margin: 3rem;
+    display: block;
+    position: relative;
+  }
+  .desktop-header .mobile-nav .content .nav-items {
+    margin-top: 3rem;
+    position: relative;
+  }
+  .desktop-header .mobile-nav .content .close {
+    position: absolute;
+    top: 0rem;
+    right: 2rem;
+    width: 50px;
+    height: 3px;
+    background-color: white;
+    border-radius: 20px;
+  }
+  .desktop-header .header-logo {
+    width: 100px;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .desktop-header .navbar-items {
+    display: none;
+  }
+  .desktop-header .right-col-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .desktop-header .right-col-items .icons {
+    margin-left: 2rem;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: none;
+  }
+  .desktop-header .right-col-items .cart {
+    width: 38px;
+    height: 38px;
+  }
+  .desktop-header .right-col-items .menu {
+    display: flex;
+  }
 }/*# sourceMappingURL=DesktopHeader.component.css.map */

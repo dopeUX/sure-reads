@@ -8,7 +8,6 @@ const getAllCartItems = async (ids:string) => {
 		ids:ids
 	}
    }
-   console.log(axiosConfig, 'uuuu2')
    const promise = await new Promise(async(resolve,  reject)=>{
     const res:any = await axios.get('http://localhost:3000/api/cartItems', {params:axiosConfig});
     if(res.status===200){

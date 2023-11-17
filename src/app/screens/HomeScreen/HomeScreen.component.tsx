@@ -30,7 +30,6 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   const router = useRouter();
   const getBooks = async () => {
     const response: any = await getAllBooks({},'');
-    console.log(response, "oooooo");
     setBooks([...response.data]);
   };
   return (
@@ -60,7 +59,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             Haven is designed to cater to every book lover's dream.
           </p>
         </section>
-        <section className="top-reads">
+        <section className="top-reads global-container">
           <h3>
             <span>Weekly</span> Top Reads.
           </h3>
