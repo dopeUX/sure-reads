@@ -37,7 +37,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       <div className="home-screen-content">
         <DesktopHeader />
         <section className="hero-section global-container">
-          <Image className="hero-image" src={heroImage} alt="" />
+          <Image loading="lazy" className="hero-image" src={heroImage} alt="" />
           <div className="right-col">
             <p>
               “Love all, trust a few,Do wrong to none: be able for thine
@@ -115,7 +115,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
         </section>
         <section className="bottom-section global-container">
           <div>
-            <Image className="image" src={bookImage} alt="" />
+            <Image loading="lazy" className="image" src={bookImage} alt="" />
             <h2>Explore, Immerse, Read.</h2>
           </div>
           <h3>

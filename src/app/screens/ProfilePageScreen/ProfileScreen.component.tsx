@@ -79,7 +79,7 @@ const ProfileScreen:React.FC<ProfileScreenProps> = ({}) => {
 	  <div className="profile-screen global-container">
 		<Toaster position="bottom-center"/>
         <div className="header">
-          <Image className="logo" src={logo} alt=""/>
+          <Image loading="lazy" className="logo" src={logo} alt=""/>
 		  <h2 className="primary-text back" onClick={() => {
 			router.push('/')
 		  }}>Back To Home</h2>

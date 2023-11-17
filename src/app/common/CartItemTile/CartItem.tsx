@@ -25,7 +25,7 @@ const CartItem:React.FC<CartItemProps> = ({id, image, title, author, price, dele
 	const dispatch = useDispatch();
 	return (
 	<div className="cart-item-tile">
-      <Image className="img" width={100} height={100} src={image} alt=""/>
+      <Image loading="lazy" className="img" width={100} height={100} src={image} alt=""/>
 	  <div className="item-details">
 		<h3>{title}</h3>
 		<p>{author}</p>

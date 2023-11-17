@@ -23,9 +23,9 @@ const LoginScreen:React.FC<LoginScreenProps> = ({}) => {
 	return (
 	  <div className="login-screen global-container">
         <div className="login-screen-wrapper">
-			<Image className="logo" src={logo} alt="logo"/>
+			<Image loading="lazy" className="logo" src={logo} alt="logo"/>
 		    <section className="login-content">
-			<Image className="tree-img" src={tree} alt="tree-img"/>
+			<Image loading="lazy" className="tree-img" src={tree} alt="tree-img"/>
 		    <div className="divider"></div>
 			<div className="login-form">
 				<h2>Sign in with your registered email</h2>

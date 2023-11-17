@@ -22,7 +22,7 @@ const ProductTile: React.FC<ProductTileProps> = ({ image, title, author, click }
        click(); 
       }
     }}>
-      <Image width={150} height={150} className="image" src={image} alt="" />
+      <Image loading="lazy" width={150} height={150} className="image" src={image} alt="" />
       <h4>{title}</h4>
     </div>
   );

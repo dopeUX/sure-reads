@@ -16,7 +16,7 @@ export interface InputBoxProps {
 const InputBox:React.FC<InputBoxProps> = ({holderText, classN = '', icon, inputClass, type, value, change}) => {
 	return (
 	  <div className={`input-box ${classN}`}>
-       {icon && <Image className="image" src={searchIcon} alt=""/>}
+       {icon && <Image loading="lazy" className="image" src={searchIcon} alt=""/>}
        <input type={type} value={value} onChange={(e)=>{
         change(e);
        }} className={inputClass} title="tt" placeholder={holderText}/>

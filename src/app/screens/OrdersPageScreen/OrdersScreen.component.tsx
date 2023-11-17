@@ -54,7 +54,7 @@ const OrdersScreen = ({}) => {
 	return (
 	  <div className="orders-screen global-container">
          <div className="header">
-          <Image className="logo" src={logo} alt=""/>
+          <Image loading="lazy" className="logo" src={logo} alt=""/>
 		  <h2 className="primary-text back" onClick={() => {
 			router.push('/')
 		  }}>Back To Home</h2>

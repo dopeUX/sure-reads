@@ -85,7 +85,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
                     </div>
                 </section>)}
                 <section className="img-section">
-                 <Image className="image" width={100} height={100} src={bookItem.volumeInfo.imageLinks.thumbnail} alt=""/>
+                 <Image loading="lazy" className="image" width={100} height={100} src={bookItem.volumeInfo.imageLinks.thumbnail} alt=""/>
                  <p className={`${bookItem?.saleInfo?.saleability === 'FOR_SALE' ? 'p-green' : 'p-red'}`}>{bookItem.saleInfo.saleability === 'FOR_SALE' ? `${bookItem.saleInfo.listPrice.amount} INR` : 'Not for sale'}</p>
                 </section>
                 {

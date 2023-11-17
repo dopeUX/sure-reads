@@ -312,10 +312,10 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
                     getData({},searchVal);
                  }
 			  }}/>
-			  <Image className="cart-icon" src={sortIcon} alt="" onClick={() => {
+			  <Image loading="lazy" className="cart-icon" src={sortIcon} alt="" onClick={() => {
 				sortBooksList()
 			  }}/>
-			  <Image className="refresh-icon" src={refreshIcon} alt="" onClick={() => {
+			  <Image loading="lazy" className="refresh-icon" src={refreshIcon} alt="" onClick={() => {
 				if(_.isEqual(advanceFilter, defaultAdvanceFilterValue) && searchVal === '') {
 				  toast.error('No Filters Applied')
 				} else {

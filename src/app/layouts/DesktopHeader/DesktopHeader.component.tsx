@@ -31,18 +31,18 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = () => {
           }}></div>
         </div>
       </div>
-      <Image className="header-logo" priority src={logo} alt="" />
+      <Image loading="lazy" className="header-logo" priority src={logo} alt="" />
       <div className="navbar-items">
         <Navbar items={navItems} />
       </div>
       <div className="right-col-items">
-        <Image className="icons cart" src={cartIcon} alt="" onClick={() => {
+        <Image loading="lazy" className="icons cart" src={cartIcon} alt="" onClick={() => {
            router.push('/cart');
         }}/>
-        <Image className="icons" src={profileIcon} alt="" onClick={() => {
+        <Image loading="lazy" className="icons" src={profileIcon} alt="" onClick={() => {
           router.push('/profile');
         }}/>
-        <Image className="icons menu" src={menuIcon} alt="" onClick={() => {
+        <Image loading="lazy" className="icons menu" src={menuIcon} alt="" onClick={() => {
           // router.push('/profile');
           mobileNavRef.current.style.animation = 'slide-dow cubic-bezier(0.77, 0, 0.175, 1) .5s forwards'
           // mobileNavRef.current.style.top = 0;
