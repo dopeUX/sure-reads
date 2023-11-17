@@ -285,6 +285,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 					getData(advanceFilter, searchVal)
 					setIsPagination(false);
 				} else {
+					setIsLoading(true)
 					getData({}, '', 0);
 					setIsPagination(true);
 				}
@@ -296,6 +297,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 				setSearchVal(e.target.value);
 				setTimeout(() => {
 					if(e.target.value == "") {
+						setIsLoading(true);
 						getData({},'',0)
 						setIsPagination(true);
 					}
