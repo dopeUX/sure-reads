@@ -281,6 +281,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			  <FilledButton classN="left-btn" title="search" click={()=>{
 				const filter = sanitizeAdvanceFilter(advanceFilter);
 				if(filter) {
+					setIsLoading(true);
 					setSearchVal('');
 					getData(advanceFilter, searchVal)
 					setIsPagination(false);
@@ -307,9 +308,11 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 			  <FilledButton title="search" click={()=>{
 				    resetAdvanceFilter();
                  if(searchVal===''){
+					setIsLoading(true);
                  	getData({},'',0)
                  	setIsPagination(true);
                  } else {
+					setIsLoading(true);
                  	setIsPagination(false);
                     getData({},searchVal);
                  }
