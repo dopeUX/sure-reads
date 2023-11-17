@@ -39,7 +39,7 @@ const CheckoutScreen:React.FC<CheckoutScreenProps> = ({}) => {
    if(!isLoggedIn) {
 	 router.push('/');
    } else if(isCheckoutRedirect) {
-     console.log(isCheckoutRedirect, 'ppppppp')
+	 router.push('/cart');
    } else {
 	 const currentUser = localStorage.getItem('currentUser');
 	 if(currentUser) {
