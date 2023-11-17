@@ -57,6 +57,7 @@ const ProfileScreen:React.FC<ProfileScreenProps> = ({}) => {
 		if(!correct && str) {
 		   toast.error(`${str} should not be left empty`);
 		} else {
+		   localStorage.setItem('currentUser', JSON.stringify(currentUser))
 		   setIsLoading(true);
 		   setTimeout(() => {
 			  setIsLoading(false)
