@@ -69,13 +69,13 @@ const OrdersScreen = ({}) => {
 			<h2>Order History</h2>
 			<div className="product-tiles">
 			   {
-				orders.length>0 && orders.map((item:any, index:number)=>{
+				 orders.length>0 ? orders.map((item:any, index:number)=>{
 					return(
 					  <CartItem key={index} id={item.id} image={item.volumeInfo.imageLinks.thumbnail}
 						title={item.volumeInfo.title} author={item.volumeInfo.authors.join(', ')}
 						price={item.saleInfo.listPrice.amount}/>
 					)
-				})
+				}) : <p>Your order history is empty</p>
 			   }
 			</div>
 		 </div> }
