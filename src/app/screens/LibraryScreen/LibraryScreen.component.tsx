@@ -175,6 +175,7 @@ const LibraryScreen:React.FC<LibraryScreenProps> = ({}) => {
 		  });
 	}
 	const resetAllFilters = () => {
+		setIsPagination(true);
 		setIsLoading(true);
 		showSortOrderToast('All Filters Removed')
 		resetAdvanceFilter();
