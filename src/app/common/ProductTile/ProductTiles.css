@@ -31,4 +31,22 @@
     width: 180px;
     font-size: 0.8rem;
   }
+}
+@media only screen and (max-width: 490px) {
+  .product-tile {
+    width: -moz-fit-content;
+    width: fit-content;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    margin-left: 0;
+  }
+  .product-tile .image {
+    width: 90px;
+    height: 130px;
+  }
+  .product-tile h4 {
+    width: 150px;
+    font-size: 0.7rem;
+  }
 }/*# sourceMappingURL=ProductTiles.css.map */

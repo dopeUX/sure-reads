@@ -71,7 +71,6 @@
     height: -moz-fit-content;
     height: fit-content;
     background-color: rgb(41, 41, 41);
-    z-index: 99999;
     margin-right: 2rem;
     top: -500px;
   }
