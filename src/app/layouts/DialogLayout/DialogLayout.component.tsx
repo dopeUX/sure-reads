@@ -52,7 +52,7 @@ const DialogLayout: React.FC<DialogLayoutProps> = ({}) => {
    }
   }
   return (
-    <div ref={dialogRef} className="dialog-layout index-99">
+    <div ref={dialogRef} className="dialog-layout">
       <div className="dialog-content">
       <div className="close-btn" onClick={() => {
             closeDialog();
