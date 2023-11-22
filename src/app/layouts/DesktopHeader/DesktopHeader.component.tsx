@@ -20,7 +20,7 @@ const DesktopHeader: React.FC<DesktopHeaderProps> = () => {
   const mobileNavRef:any = useRef();
   const mobileItems = [...navItems, ...extraNavItems];
   return (
-    <div className="desktop-header index-99">
+    <div className="desktop-header">
       <div ref={mobileNavRef} className="mobile-nav">
         <div className="content">
           <div className="nav-items">
