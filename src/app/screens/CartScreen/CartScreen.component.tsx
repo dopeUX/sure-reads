@@ -60,7 +60,7 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 	   });
 	   localStorage.setItem('cartItems', JSON.stringify([...items]));
 	   setCartItems([...items]);
-	   dispatch(updateCartItems([...items]));
+	   dispatch(updateCartItems(items));
 	   calculateExpense(items);
 	   toast.success('Item removed from cart', {
 		style: {
@@ -118,7 +118,7 @@ const CartScreen:React.FC<CartScreenProps> = ({}) => {
 			   <h3 className="your-cart">Your Cart <span className="primary-text">{cartItems?.length} items</span></h3>
 			   {cartItems.length>0 ? <div><div className="cart-items-section">
 				 {
-					cartItemsFromRedux && cartItemsFromRedux?.map((item: any, index: number) => {
+					cartItems && cartItems?.map((item: any, index: number) => {
 					  return <CartItem key={index} id={item.id} image={item.volumeInfo.imageLinks.thumbnail}
 					  title={item.volumeInfo.title} author={item.volumeInfo.authors.join(', ')}
 					  price={item.saleInfo.listPrice.amount} deleteItem={(id:any)=>{deleteCartItem(id)}}/>	
